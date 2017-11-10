@@ -1,0 +1,105 @@
+
+        <section class="main-content-wrapper">
+            <!-- Main content view  -->
+                  <div class="pageheader">
+                <h1>View All Party Details</h1>
+                <div class="breadcrumb-wrapper hidden-xs">
+                    <span class="label">You are here:</span>
+                    <ol class="breadcrumb">
+                        <li><a href="/">Dashboard</a>
+                        </li>
+                        <li>UI Elements</li>
+                        <li class="active">Panels</li>
+                    </ol>
+                </div>
+            </div>
+            <section id="main-content" class="animated fadeInUp">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                               <p>
+  <strong>Party name:</strong>
+  <%= @party.party_name %>
+</p>
+
+<p>
+  <strong>Party gstin no:</strong>
+  <%= @party.party_gstin_no %>
+</p>
+
+<p>
+  <strong>Party arn no:</strong>
+  <%= @party.party_arn_no %>
+</p>
+
+<p>
+  <strong>Party address:</strong>
+  <%= @party.party_address %>
+</p>
+
+<p>
+  <strong>Place of supply:</strong>
+  <%= @party.place_of_supply %>
+</p>
+
+<p>
+  <strong>Commodity name:</strong>
+  <%= @party.commodity_name %>
+</p>
+
+<p>
+  <strong>Tarrif no:</strong>
+  <%= @party.tarrif_no %>
+</p>
+
+<p>
+  <strong>Hsn no:</strong>
+  <%= @party.hsn_no %>
+</p>
+
+<p>
+  <strong>Rate of tax:</strong>
+  <%= @party.rate_of_tax %>
+</p>
+
+<p>
+  <strong>Name service:</strong>
+  <%= @party.name_service %>
+</p>
+
+<p>
+  <strong>Service acc code:</strong>
+  <%= @party.service_acc_code %>
+</p>
+
+<p>
+  <strong>Party pan no:</strong>
+  <%= @party.party_pan_no %>
+</p>
+
+<p>
+  <strong>State name:</strong>
+  <%= @party.state_name %>
+</p>
+
+<p>
+  <strong>State code:</strong>
+  <%= @party.state_code %>
+</p>
+
+<p>
+  <strong>Ca name:</strong>
+  <%= @party.ca_name %>
+</p>
+
+<p>
+  <strong>Ca contact:</strong>
+  <%= @party.ca_contact %>
+</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%= link_to 'Back', parties_path,class: "btn btn-primary" %>

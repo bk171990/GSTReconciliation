@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  party_name: MyString
+  party_gstin_no: MyString
+  party_arn_no: MyString
+  party_address: MyString
+  place_of_supply: MyString
+  commodity_name: MyString
+  tarrif_no: MyString
+  hsn_no: MyString
+  rate_of_tax: MyString
+  name_service: MyString
+  service_acc_code: MyString
+  party_pan_no: MyString
+  state_name: MyString
+  state_code: MyString
+  ca_name: MyString
+  ca_contact: MyString
+
+two:
+  party_name: MyString
+  party_gstin_no: MyString
+  party_arn_no: MyString
+  party_address: MyString
+  place_of_supply: MyString
+  commodity_name: MyString
+  tarrif_no: MyString
+  hsn_no: MyString
+  rate_of_tax: MyString
+  name_service: MyString
+  service_acc_code: MyString
+  party_pan_no: MyString
+  state_name: MyString
+  state_code: MyString
+  ca_name: MyString
+  ca_contact: MyString

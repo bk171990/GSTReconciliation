@@ -1,0 +1,53 @@
+
+        <section class="main-content-wrapper">
+                  <div class="pageheader">
+                <h1>View All Details</h1>
+                <div class="breadcrumb-wrapper hidden-xs">
+                    <span class="label">You are here:</span>
+                    <ol class="breadcrumb">
+                        <li><a href="/">Dashboard</a>
+                        </li>
+                        <li class="active">View All CA Details</li>
+                    </ol>
+                </div>
+            </div>
+            <section id="main-content" class="animated fadeInUp">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <p>
+                                  <strong>Name:</strong>
+                                  <%= @charted_accountant.name %>
+                                </p>
+
+<p>
+  <strong>Phn no:</strong>
+  <%= @charted_accountant.phn_no %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @charted_accountant.address %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @charted_accountant.email %>
+</p>
+
+<p>
+  <strong>Firm name:</strong>
+  <%= @charted_accountant.firm_name %>
+</p>
+
+<p>
+  <strong>Ca no:</strong>
+  <%= @charted_accountant.ca_no %>
+</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <%= link_to 'Back', charted_accountants_path,class: "btn btn-primary" %>
