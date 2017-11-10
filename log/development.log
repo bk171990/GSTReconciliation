@@ -67062,3 +67062,57 @@ Processing by UiController#tabs_accordions as HTML
 Completed 200 OK in 123ms (Views: 120.8ms)
 
 
+Started GET "/" for ::1 at 2017-11-10 20:53:43 +0530
+Started GET "/dashboard" for ::1 at 2017-11-10 20:53:43 +0530
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (1373.0ms)
+  Rendered layouts/partials/_header.html.erb (0.9ms)
+  Rendered layouts/partials/_leftsidebar.html.erb (2.2ms)
+  Rendered layouts/partials/_footer.html.erb (0.3ms)
+  Rendered layouts/partials/_rightsidebar.html.erb (9.7ms)
+  Rendered layouts/partials/_config.erb (0.5ms)
+Completed 200 OK in 2435ms (Views: 1822.2ms)
+
+
+Started GET "/assets/simple-line-icons/fonts/Simple-Line-Icons.woff" for ::1 at 2017-11-10 20:53:46 +0530
+Started GET "/assets/font-awesome/fonts/fontawesome-webfont.woff?v=4.2.0" for ::1 at 2017-11-10 20:53:46 +0530
+Started GET "/ui/buttons" for ::1 at 2017-11-10 20:54:04 +0530
+Processing by UiController#buttons as HTML
+  Rendering ui/buttons.html.erb within layouts/application
+  Rendered ui/buttons.html.erb within layouts/application (2.2ms)
+  Rendered layouts/partials/_header.html.erb (4.3ms)
+  Rendered layouts/partials/_leftsidebar.html.erb (2.3ms)
+  Rendered layouts/partials/_footer.html.erb (0.4ms)
+  Rendered layouts/partials/_rightsidebar.html.erb (20.2ms)
+  Rendered layouts/partials/_config.erb (1.7ms)
+Completed 200 OK in 266ms (Views: 252.4ms)
+
+
+Started GET "/dashboard" for ::1 at 2017-11-10 20:54:06 +0530
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (5.9ms)
+  Rendered layouts/partials/_header.html.erb (1.8ms)
+  Rendered layouts/partials/_leftsidebar.html.erb (6.0ms)
+  Rendered layouts/partials/_footer.html.erb (0.6ms)
+  Rendered layouts/partials/_rightsidebar.html.erb (12.8ms)
+  Rendered layouts/partials/_config.erb (1.4ms)
+Completed 200 OK in 159ms (Views: 155.6ms)
+
+
+Started GET "/" for ::1 at 2017-11-10 20:55:00 +0530
+Started GET "/dashboard" for ::1 at 2017-11-10 20:55:00 +0530
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (394.3ms)
+  Rendered layouts/partials/_header.html.erb (0.8ms)
+  Rendered layouts/partials/_leftsidebar.html.erb (4.1ms)
+  Rendered layouts/partials/_footer.html.erb (0.4ms)
+  Rendered layouts/partials/_rightsidebar.html.erb (8.3ms)
+  Rendered layouts/partials/_config.erb (0.6ms)
+Completed 200 OK in 781ms (Views: 588.9ms)
+
+
+Started GET "/assets/simple-line-icons/fonts/Simple-Line-Icons.woff" for ::1 at 2017-11-10 20:55:01 +0530
+Started GET "/assets/font-awesome/fonts/fontawesome-webfont.woff?v=4.2.0" for ::1 at 2017-11-10 20:55:01 +0530
