@@ -15,6 +15,7 @@ class ChartedAccountantsController < ApplicationController
   # GET /charted_accountants/new
   def new
     @charted_accountant = ChartedAccountant.new
+    @charted_accountant.ca_no = ChartedAccountant.set_ca_no
   end
 
   # GET /charted_accountants/1/edit
@@ -69,6 +70,6 @@ class ChartedAccountantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def charted_accountant_params
-      params.require(:charted_accountant).permit(:name, :phn_no, :address, :email, :firm_name, :ca_no)
+      params.require(:charted_accountant).permit(:image,:name, :phn_no, :address, :email, :firm_name, :ca_no)
     end
 end

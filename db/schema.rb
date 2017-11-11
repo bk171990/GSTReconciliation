@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171110131849) do
+ActiveRecord::Schema.define(version: 20171111063049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,10 @@ ActiveRecord::Schema.define(version: 20171110131849) do
     t.string "ca_no"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "general_settings", force: :cascade do |t|
@@ -63,6 +67,21 @@ ActiveRecord::Schema.define(version: 20171110131849) do
     t.string "ca_contact"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
+    t.string "party_no"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "user_charted_accountants", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "charted_accountant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["charted_accountant_id"], name: "index_user_charted_accountants_on_charted_accountant_id"
+    t.index ["user_id"], name: "index_user_charted_accountants_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -80,10 +99,20 @@ ActiveRecord::Schema.define(version: 20171110131849) do
     t.datetime "updated_at", null: false
     t.bigint "general_setting_id"
     t.string "role"
+    t.bigint "charted_accountant_id"
+    t.bigint "party_id"
+    t.string "first_name"
+    t.string "username"
+    t.index ["charted_accountant_id"], name: "index_users_on_charted_accountant_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["general_setting_id"], name: "index_users_on_general_setting_id"
+    t.index ["party_id"], name: "index_users_on_party_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "user_charted_accountants", "charted_accountants"
+  add_foreign_key "user_charted_accountants", "users"
+  add_foreign_key "users", "charted_accountants"
   add_foreign_key "users", "general_settings"
+  add_foreign_key "users", "parties"
 end

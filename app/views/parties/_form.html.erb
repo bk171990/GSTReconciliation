@@ -42,6 +42,23 @@
                                             <%= f.text_field :party_name,class: "form-control",placeholder: "Party Name."%>
                                         </div>
                                     </div>
+
+                                     <div class="form-group">
+                                        <label class="col-sm-3 control-label">Email</label>
+                                        <div class="col-sm-12">
+                                            
+                                            <%= f.text_field :email,class: "form-control",placeholder: "Email Address."%>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Party No</label>
+                                        <div class="col-sm-12">
+                                            
+                                            <%= f.text_field :party_no,class: "form-control",placeholder: "Party No."%>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">GST No</label>
                                         <div class="col-sm-12">
@@ -63,7 +80,7 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">Place Of Supply</label>
                                         <div class="col-sm-12">
-                                             <%= f.text_field :place_of_supply, class: "form-control", name: "input2", id: "input2", required: "" ,placeholder: "Place of supply."%>
+                                             <%= f.text_field :place_of_supply, class: "form-control",placeholder: "Place of supply."%>
                                         </div>
                                     </div>
 
@@ -142,6 +159,13 @@
                                         <label class="col-sm-3 control-label">CA Contact </label>
                                         <div class="col-sm-12">
                                             <%= f.text_field :ca_contact , class: "form-control" ,placeholder: "Conatct."%>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Upload Profile Image</label>
+                                        <div class="col-sm-12">
+                                            <%=f.file_field :image,class: "form-control"%>
                                         </div>
                                     </div>
 

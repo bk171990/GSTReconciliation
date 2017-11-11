@@ -15,6 +15,12 @@ class User < ApplicationRecord
     update(general_setting_id: gs.id, role: role)
   end
 
+  # def create_user_charted_accountant(ca_no, email)
+  #   employee_number.each do |emp_no|
+  #     UserChartedAccountant.create(email: email, ca_no: ca_no)
+  #   end
+  # end
+
     def self.current
     Thread.current[:user]
   end
