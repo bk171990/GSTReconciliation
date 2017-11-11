@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+gs = GeneralSetting.create!(name_of_service: 'Gst Reconciliation Pvt. Ltd.')
+user = User.create!(:email => 'gst@admin.in', :password => '123456789', :password_confirmation => '123456789', general_setting_id: gs.id, role: 'SuperAdmin')

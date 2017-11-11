@@ -1,12 +1,25 @@
 Rails.application.routes.draw do
 
-  get 'dashboard/index'
+  resources :parties
+  resources :charted_accountants
+   devise_for :users, controllers: { registrations: 'registrations' }
+   as :user do
+     get '/users/sign_out' => 'devise/sessions#destroy'
+   end
+  root 'home#dashboard'
+  # get 'dashboard/index'
 
   # defaults to dashboard
-  root :to => redirect('/dashboard')
-  
+  # root :to => redirect('/dashboard')
+  resources :home do
+    collection do 
+    get :dashboard
+    end
+  end
+
+  resources :general_settings
   # view routes
-  get '/dashboard' => 'dashboard#index'
+  # get '/dashboard' => 'dashboard#index'
 
   get 'ui/buttons'
   get 'ui/sliders_progress'
