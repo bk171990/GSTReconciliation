@@ -1,0 +1,186 @@
+  <div class="pageheader">
+                <h1>New Party</h1>
+                <div class="breadcrumb-wrapper hidden-xs">
+                    <span class="label">You are here:</span>
+                    <ol class="breadcrumb">
+                        <li><a href="/">Dashboard</a>
+                        </li>
+                        <li class="active">New Party</li>
+                    </ol>
+                </div>
+            </div>
+            <section id="main-content" class="animated fadeInUp">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">New Party</h3>
+                                <div class="actions pull-right">
+                                 <i class="fa fa-expand"></i>
+                                    <i class="fa fa-chevron-down"></i>
+                                    <i class="fa fa-times"></i>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                           
+                           <%= form_with(model: party, local: true) do |f| %>
+  <% if party.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(party.errors.count, "error") %> prohibited this party from being saved:</h2>
+
+      <ul>
+      <% party.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Party Name</label>
+                                        <div class="col-sm-12">
+                                            
+                                            <%= f.text_field :party_name,class: "form-control",placeholder: "Party Name."%>
+                                        </div>
+                                    </div>
+
+                                     <div class="form-group">
+                                        <label class="col-sm-3 control-label">Email</label>
+                                        <div class="col-sm-12">
+                                            
+                                            <%= f.text_field :email,class: "form-control",placeholder: "Email Address."%>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Party No</label>
+                                        <div class="col-sm-12">
+                                            
+                                            <%= f.text_field :party_no,class: "form-control",placeholder: "Party No."%>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">GST No</label>
+                                        <div class="col-sm-12">
+                                            <%= f.text_field :party_gstin_no, class: "form-control" ,placeholder: "Gst No."%>
+                                        </div>
+                                    </div>
+                                     <div class="form-group">
+                                        <label class="col-sm-3 control-label">ARN No</label>
+                                        <div class="col-sm-12">
+                                            <%= f.text_field :party_arn_no, class: "form-control", placeholder: "ARN No."%>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Address</label>
+                                        <div class="col-sm-12">
+                                             <%= f.text_field :party_address, class: "form-control" ,placeholder: "Address."%>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Place Of Supply</label>
+                                        <div class="col-sm-12">
+                                             <%= f.text_field :place_of_supply, class: "form-control",placeholder: "Place of supply."%>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Commodity Name</label>
+                                        <div class="col-sm-12">
+                                            <%= f.text_field :commodity_name, class: "form-control" ,placeholder: "No."%>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Tarrif No</label>
+                                        <div class="col-sm-12">
+                                            <%= f.text_field :tarrif_no, class: "form-control" ,placeholder: "No."%>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">HSN No</label>
+                                        <div class="col-sm-12">
+                                            <%= f.text_field :hsn_no, class: "form-control" ,placeholder: "No."%>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Rate Of Tax</label>
+                                        <div class="col-sm-12">
+                                            <%= f.text_field :rate_of_tax, class: "form-control" ,placeholder: "Tax Rate."%>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Name Service</label>
+                                        <div class="col-sm-12">
+                                            <%= f.text_field :name_service, class: "form-control" ,placeholder: "Name."%>
+                                        </div>
+                                    </div>
+
+                                     <div class="form-group">
+                                        <label class="col-sm-3 control-label">Service Accounting Code</label>
+                                        <div class="col-sm-12">
+                                            <%= f.text_field :service_acc_code, class: "form-control" ,placeholder: "Code."%>
+                                        </div>
+                                    </div>
+
+
+                                     <div class="form-group">
+                                        <label class="col-sm-3 control-label">PAN NO</label>
+                                        <div class="col-sm-12">
+                                            <%= f.text_field :party_pan_no, class: "form-control" ,placeholder: "PAN No."%>
+                                        </div>
+                                    </div>
+
+                                     <div class="form-group">
+                                        <label class="col-sm-3 control-label">State Name</label>
+                                        <div class="col-sm-12">
+                                            <%= f.text_field :state_name, class: "form-control" ,placeholder: "State Name."%>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">State Code</label>
+                                        <div class="col-sm-12">
+                                            <%= f.text_field :state_code, class: "form-control" ,placeholder: "State Code."%>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">CA Name</label>
+                                        <div class="col-sm-12">
+                                            <%= f.text_field :ca_name, class: "form-control" ,placeholder: "CA Name."%>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">CA Contact </label>
+                                        <div class="col-sm-12">
+                                            <%= f.text_field :ca_contact , class: "form-control" ,placeholder: "Conatct."%>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Upload Profile Image</label>
+                                        <div class="col-sm-12">
+                                            <%=f.file_field :image,class: "form-control"%>
+                                        </div>
+                                    </div>
+
+                                  
+                             
+                                    <div class="panel-body">
+                                        <div class="col-sm-offset-3 col-sm-12">
+                                        <%= f.submit class: "btn btn-success"%>
+                                        <%= link_to 'Back', parties_path,class: "btn btn-primary" %>
+                                        </div>
+                                    </div>
+                                
+                                <%end%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
