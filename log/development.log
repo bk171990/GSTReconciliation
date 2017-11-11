@@ -67116,3 +67116,16 @@ Completed 200 OK in 781ms (Views: 588.9ms)
 
 Started GET "/assets/simple-line-icons/fonts/Simple-Line-Icons.woff" for ::1 at 2017-11-10 20:55:01 +0530
 Started GET "/assets/font-awesome/fonts/fontawesome-webfont.woff?v=4.2.0" for ::1 at 2017-11-10 20:55:01 +0530
+Started GET "/" for ::1 at 2017-11-11 18:20:06 +0530
+Started GET "/dashboard" for ::1 at 2017-11-11 18:20:06 +0530
+Processing by DashboardController#index as HTML
+  Rendering dashboard/index.html.erb within layouts/application
+  Rendered dashboard/index.html.erb within layouts/application (573.3ms)
+  Rendered layouts/partials/_header.html.erb (0.8ms)
+  Rendered layouts/partials/_leftsidebar.html.erb (2.3ms)
+  Rendered layouts/partials/_footer.html.erb (0.3ms)
+  Rendered layouts/partials/_rightsidebar.html.erb (5.8ms)
+  Rendered layouts/partials/_config.erb (0.9ms)
+Completed 200 OK in 1170ms (Views: 881.9ms)
+
+
