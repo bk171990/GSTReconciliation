@@ -77232,3 +77232,91 @@ Completed 200 OK in 1170ms (Views: 881.9ms)
 =======
 >>>>>>> html_integration
 >>>>>>> ec2a014ceae11d07d1e56e3ba7f5082f56f9c75f
+Started GET "/" for ::1 at 2017-11-13 10:03:58 +0530
+  [1m[35m (41.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#dashboard as HTML
+Completed 401 Unauthorized in 24ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-11-13 10:03:59 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (35.5ms)
+Completed 200 OK in 1980ms (Views: 1880.8ms | ActiveRecord: 74.2ms)
+
+
+Started GET "/assets/simple-line-icons/fonts/Simple-Line-Icons.woff" for ::1 at 2017-11-13 10:04:02 +0530
+Started GET "/assets/font-awesome/fonts/fontawesome-webfont.woff?v=4.2.0" for ::1 at 2017-11-13 10:04:02 +0530
+Started POST "/users/sign_in" for ::1 at 2017-11-13 10:04:30 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mReSx31oNDPxmueJ9BgVgNyrgAm/pNwo+oo8JSJEsIunxzfzRBDu5EbRMQn1n27Vgq4V37J3z6j2lV2DfMvebQ==", "user"=>{"email"=>"gst@admin.in", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (120.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "gst@admin.in"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (26.8ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-11-13 04:34:30.883471"], ["last_sign_in_at", "2017-11-11 07:23:32.309616"], ["sign_in_count", 3], ["updated_at", "2017-11-13 04:34:30.884880"], ["id", 1]]
+  [1m[35m (7.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 485ms (ActiveRecord: 155.3ms)
+
+
+Started GET "/" for ::1 at 2017-11-13 10:04:30 +0530
+Processing by HomeController#dashboard as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/dashboard.html.erb within layouts/application
+  Rendered home/dashboard.html.erb within layouts/application (1.4ms)
+  Rendered layouts/partials/_header.html.erb (1.3ms)
+  Rendered layouts/partials/_leftsidebar.html.erb (2.1ms)
+  Rendered layouts/partials/_footer.html.erb (0.3ms)
+  Rendered layouts/partials/_rightsidebar.html.erb (6.1ms)
+  Rendered layouts/partials/_config.erb (0.9ms)
+  Rendered home/_index.html.erb (35.5ms)
+Completed 200 OK in 89ms (Views: 85.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_out" for ::1 at 2017-11-13 10:06:33 +0530
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 58ms (ActiveRecord: 4.8ms)
+
+
+Started GET "/" for ::1 at 2017-11-13 10:06:33 +0530
+Processing by HomeController#dashboard as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-11-13 10:06:33 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 57ms (Views: 55.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2017-11-13 10:06:36 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NFQpqQply4SgIx9K4NFGqfTEDOky2MnZ4SLtFMn9Kuw3xJWAXXXG0t3fZFUt9S/JUQaqk6UqfBaRojhkYkcUpw==", "user"=>{"email"=>"gst@admin.in", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "gst@admin.in"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-11-13 04:36:36.531990"], ["last_sign_in_at", "2017-11-13 04:34:30.883471"], ["sign_in_count", 4], ["updated_at", "2017-11-13 04:36:36.534122"], ["id", 1]]
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/home/dashboard
+Completed 302 Found in 222ms (ActiveRecord: 9.9ms)
+
+
+Started GET "/home/dashboard" for ::1 at 2017-11-13 10:06:36 +0530
+Processing by HomeController#dashboard as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/dashboard.html.erb within layouts/application
+  Rendered home/dashboard.html.erb within layouts/application (0.4ms)
+  Rendered layouts/partials/_header.html.erb (1.5ms)
+  Rendered layouts/partials/_leftsidebar.html.erb (3.7ms)
+  Rendered layouts/partials/_footer.html.erb (0.6ms)
+  Rendered layouts/partials/_rightsidebar.html.erb (10.2ms)
+  Rendered layouts/partials/_config.erb (0.5ms)
+  Rendered home/_index.html.erb (23.1ms)
+Completed 200 OK in 74ms (Views: 70.7ms | ActiveRecord: 0.5ms)
+
+
