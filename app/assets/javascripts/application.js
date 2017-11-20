@@ -2,3 +2,4 @@
 // listed below.
 
 //= require src/app
+//= require select2
