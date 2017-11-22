@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
 
   def load_item_data
     @item = Item.find_by_id(params[:item_id]).present? ? Item.find(params[:item_id]) : Item.unscoped.find_by_id(params[:item_id])
-    render :json => [ @item.qty || "" , @item.uom, @item.rate]
+    render :json => [ @item.qty || "" , @item.uom, @item.rate, @item.cgst, @item.sgst]
     
   end
 
@@ -52,8 +52,8 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @item }
+        format.html { redirect_to item_path, notice: 'Item was successfully updated.' }
+        format.json { render :index, status: :ok, location: @item }
       else
         format.html { render :edit }
         format.json { render json: @item.errors, status: :unprocessable_entity }
@@ -79,6 +79,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:dogns, :item_hsn_no, :uom, :qty, :rate, :taxable_value)
+      params.require(:item).permit(:dogns, :item_hsn_no, :uom, :qty, :rate, :taxable_value,:cgst,:sgst)
     end
 end

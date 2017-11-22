@@ -18,6 +18,7 @@ gem 'bootstrap-select-rails'
 gem 'momentjs-rails'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem "select2-rails"
+gem "cocoon"
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server

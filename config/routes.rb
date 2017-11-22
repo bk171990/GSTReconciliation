@@ -9,6 +9,18 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :invoices do
+    collection do
+      post :add
+    end
+  end
+
+  resources :invoice_items do
+    collection do
+      post :add
+    end
+  end
+
   resources :customer_items do
    collection do
     post :create

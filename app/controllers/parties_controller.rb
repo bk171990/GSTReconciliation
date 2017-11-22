@@ -45,19 +45,11 @@ class PartiesController < ApplicationController
         current_user.party_id = @party.id
         current_user.save
       end
-    end
+     end
     @party.save
-    redirect_to @party
-  end
-
-      # if @party.save
-      #   format.html { redirect_to @party, notice: 'Party was successfully created.' }
-      #   format.json { render :show, status: :created, location: @party }
-      # else
-      #   format.html { render :new }
-      #   format.json { render json: @party.errors, status: :unprocessable_entity }
-      # end
-    # end
+     
+      redirect_to @party
+    end
   
 
   # PATCH/PUT /parties/1

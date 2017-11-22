@@ -6,7 +6,7 @@
                     <%elsif current_user.role == 'ChartedAccountant'%>
                       <%= image_tag current_user.charted_accountant.image%>
                     <%else current_user.role == 'Party'%>
-                      <%= image_tag current_user.try(:party).try(:image)%>
+                      <%#= image_tag current_user.try(:party).try(:image)%>
                     <%end%>
                     <i class="on border-dark animated bounceIn"></i>
                 </div>
@@ -149,16 +149,11 @@
                         </li>
 
                         <li class="<%= 'active' if controller?('ui') && action?('buttons') %>">
-                                <a href="/customers/add_item">
-                                     Create Invoice
+                                <a href="/invoices/new">
+                                     Generate Invoice
                                 </a>
                         </li>
 
-                        <li class="<%= 'active' if controller?('ui') && action?('buttons') %>">
-                                <a href="/items/add_item">
-                                    Invoice
-                                </a>
-                        </li>
 
                         <li class="nav-dropdown">
                                 <a href="#" title="Level 2.3">

@@ -13,20 +13,25 @@ class CustomersController < ApplicationController
 
   def add_item
    @customer = Customer.new
-   # @customer.items.build
-    @customer_items = CustomerItem.all
-   # @item = @customer.items
+   @customer.items.build
+   @invoice = Invoice.new
+   @invoice.invoice_no = Invoice.set_invoice_no
+   @customers = CustomerItem.all
   end
 
   def add
-  
+    CustomerItem.create(:customer_id => params[:customer][:id],:item_id => params[:customer][:items][:item_id])
+     redirect_to '/customers/add_item'
+  end
+
+
+
     #  @customer = Customer.new
     #  byebug
     # if params[:add_item]
     #    @customer.items.build
     # else
-    CustomerItem.create(:customer_id => params[:customer][:id],:item_id => params[:customer][:items][:item_id])
-
+    
     # customer_id =  params[:customer_item][:item_id]
     # item_id = params[:customer_item][:item_id]
     # customer_item = CustomerItem.find_or_initialize_by(customer_id: params[:customer_item][:item_id], item_id: params[:customer_item][:item_id])
@@ -39,10 +44,10 @@ class CustomersController < ApplicationController
     # customer_item.time_of_supply = params[:customer_item][:time_of_supply]
     # customer_item.place_of_supply = params[:customer_item][:place_of_supply]
     # customer_item.save
-    redirect_to '/customers/add_item'
+    
   
    # render :action => 'add_item'
-end
+
 
   def load_customer_data
     @customer = Customer.find_by_id(params[:customer_id]).present? ? Customer.find(params[:customer_id]) : Customer.unscoped.find_by_id(params[:customer_id])

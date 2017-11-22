@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171120085230) do
+ActiveRecord::Schema.define(version: 20171121121511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20171120085230) do
     t.string "time_of_supply"
     t.string "place_of_supply"
     t.string "total_invoice"
+    t.integer "invoice_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -102,6 +103,23 @@ ActiveRecord::Schema.define(version: 20171120085230) do
     t.datetime "image_updated_at"
   end
 
+  create_table "invoice_items", force: :cascade do |t|
+    t.integer "invoice_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "item_id"
+    t.string "number"
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.string "invoice_no"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "customer_id"
+    t.integer "item_id"
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "dogns"
     t.string "item_hsn_no"
@@ -112,6 +130,8 @@ ActiveRecord::Schema.define(version: 20171120085230) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"
+    t.decimal "cgst"
+    t.decimal "sgst"
   end
 
   create_table "parties", force: :cascade do |t|
