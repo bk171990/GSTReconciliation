@@ -1,0 +1,52 @@
+<div class="row">
+                    <div class="col-md-12">
+
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">View All Items</h3>
+                            <div class="actions pull-right">
+                             <i class="fa fa-expand"></i>
+                                <i class="fa fa-chevron-down"></i>
+                                <i class="fa fa-times"></i>
+                            </div>
+                          </div>
+                          <div class="panel-body">
+                        
+                            <div class="table-responsive">
+                              <table class="table table-bordered table-striped">
+                                <thead>
+                                  <tr> 
+                                    <th>Sr.No</th>
+                                    <th>Item Name</th>
+                                    <th>Quantity</th>
+                                    <th>Rate</th>
+                                    <th>Total Amount</th>
+                                    <th>CGST(%)</th>
+                                    <th>CGST(Rs)</th>
+                                    <th>SGST(%)</th>
+                                    <th>SGST(Rs)</th>
+                                    <th>Actions</th>
+                                    <th colspan="3"></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                 <tbody>
+                                  <% @customer_items.each_with_index do |s,i| %>
+                                    <tr> 
+                                      <td><%=i+1 %></td>
+                                      <td><%= s.item_id %></td>
+                                      <td><%= s.item.qty %></td>
+                                      <td><%= s.item.rate %></td>
+                                      <td><%= s.item.qty + s.item.rate%></td>
+                                    
+                                      <td><%#= link_to 'Destroy', customer_item_path(s), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                    </tr>
+                                  <% end %>
+                                </tbody>
+                              </table>
+                            </div>
+
+                    </div>
+                </div>
+               </div>
+             </div>

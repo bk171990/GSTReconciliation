@@ -1,5 +1,6 @@
 class GeneralSettingsController < ApplicationController
 	def new
+    @general_setting = GeneralSetting.first
 	  @general_setting = current_user.general_setting
 	end
 
@@ -20,7 +21,7 @@ class GeneralSettingsController < ApplicationController
   # this private methods tell us exactly which parameters are allowed
   # into our controller actions.
   def general_setting_params
-    params.require(:general_setting).permit!
+    params.require(:general_setting).permit(:first_name, :last_name, :contact_no, :email, :business_description, :gst_no, :pan, :name_of_service, :service_acc_code, :rate_of_tax, :address, :state_name, :state_code, :image)
   end
 end
  

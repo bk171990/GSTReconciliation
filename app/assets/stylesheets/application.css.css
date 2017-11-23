@@ -4,5 +4,8 @@
 
 
  *= require custom/app
+ *= require jquery-ui
+ *= require select2
+ *= require select2-bootstrap
 
  */

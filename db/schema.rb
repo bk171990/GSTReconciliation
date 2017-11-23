@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171111063049) do
+ActiveRecord::Schema.define(version: 20171121121511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "business_sales", force: :cascade do |t|
+    t.date "invoice_date"
+    t.string "serial_no"
+    t.string "gstin_no"
+    t.string "eway_bill"
+    t.string "transportation_mode"
+    t.string "vehicle_no"
+    t.date "date"
+    t.string "time_of_supply"
+    t.string "place_of_supply"
+    t.string "total_invoice"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "charted_accountants", force: :cascade do |t|
     t.string "name"
@@ -28,6 +43,42 @@ ActiveRecord::Schema.define(version: 20171111063049) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "customer_items", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "invoice_date"
+    t.string "serial_no"
+    t.string "gstin_no"
+    t.string "eway_bill"
+    t.string "transportation_mode"
+    t.string "vehicle_no"
+    t.date "date"
+    t.string "time_of_supply"
+    t.string "place_of_supply"
+    t.string "total_invoice"
+    t.integer "invoice_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "customer_name"
+    t.string "gstin_no_reg"
+    t.string "arn_no"
+    t.string "address"
+    t.string "cust_place_of_supply"
+    t.string "cust_name_of_commodity_supplied"
+    t.string "cust_tarrif_no"
+    t.string "cust_rate_of_tax"
+    t.string "cust_name_of_service"
+    t.string "cust_serv_acc_code"
+    t.string "cust_pan_no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "party_id"
+    t.string "invoice_no"
   end
 
   create_table "general_settings", force: :cascade do |t|
@@ -46,6 +97,41 @@ ActiveRecord::Schema.define(version: 20171111063049) do
     t.string "state_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "invoice_items", force: :cascade do |t|
+    t.integer "invoice_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "item_id"
+    t.string "number"
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.string "invoice_no"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "customer_id"
+    t.integer "item_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "dogns"
+    t.string "item_hsn_no"
+    t.string "uom"
+    t.string "qty"
+    t.string "rate"
+    t.string "taxable_value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "customer_id"
+    t.decimal "cgst"
+    t.decimal "sgst"
   end
 
   create_table "parties", force: :cascade do |t|
@@ -73,6 +159,10 @@ ActiveRecord::Schema.define(version: 20171111063049) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.bigint "charted_accountant_id"
+    t.string "composite"
+    t.string "regular"
+    t.index ["charted_accountant_id"], name: "index_parties_on_charted_accountant_id"
   end
 
   create_table "user_charted_accountants", force: :cascade do |t|
@@ -103,6 +193,10 @@ ActiveRecord::Schema.define(version: 20171111063049) do
     t.bigint "party_id"
     t.string "first_name"
     t.string "username"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["charted_accountant_id"], name: "index_users_on_charted_accountant_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["general_setting_id"], name: "index_users_on_general_setting_id"
@@ -110,6 +204,7 @@ ActiveRecord::Schema.define(version: 20171111063049) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "parties", "charted_accountants"
   add_foreign_key "user_charted_accountants", "charted_accountants"
   add_foreign_key "user_charted_accountants", "users"
   add_foreign_key "users", "charted_accountants"

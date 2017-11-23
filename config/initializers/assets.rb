@@ -12,6 +12,16 @@ Rails.application.config.assets.precompile += %w( charted_accountants.css )
 Rails.application.config.assets.precompile += %w( charted_accountants.js )
 Rails.application.config.assets.precompile += %w( parties.css )
 Rails.application.config.assets.precompile += %w( parties.js )
+Rails.application.config.assets.precompile += %w( users.css )
+Rails.application.config.assets.precompile += %w( users.js )
+Rails.application.config.assets.precompile += %w( items.css )
+Rails.application.config.assets.precompile += %w( items.js )
+Rails.application.config.assets.precompile += %w( customers.css )
+Rails.application.config.assets.precompile += %w( customers.js )
+Rails.application.config.assets.precompile += %w( customer_items.css )
+Rails.application.config.assets.precompile += %w( customer_items.js )
+Rails.application.config.assets.precompile += %w( invoices.css )
+Rails.application.config.assets.precompile += %w( invoices.js )
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.

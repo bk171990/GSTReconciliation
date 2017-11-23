@@ -13,36 +13,40 @@
                             </div>
                           </div>
                           <div class="panel-body">
+                          <%= link_to 'New Charted Accountant', new_charted_accountant_path, class: 'btn btn-link' %>
 
                             <div class="table-responsive">
                               <table class="table table-bordered table-striped">
                                 <thead>
-                                  <tr>
+                                  <tr> 
+                                    <th>Sr.No</th>
                                     <th>Name</th>
-      <th>Phn no</th>
-      <th>Address</th>
-      <th>Email</th>
-      <th>Firm name</th>
-      <th>Ca no</th>
-      <th colspan="3"></th>
+                                    <th>Phn no</th>
+                                    <th>Address</th>
+                                    <th>Email</th>
+                                    <th>Firm name</th>
+                                    <th>CA No</th>
+                                    <th>Actions</th>
+                                    <th colspan="3"></th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                  <tbody>
-    <% @charted_accountants.each do |charted_accountant| %>
-      <tr>
-        <td><%= charted_accountant.name %></td>
-        <td><%= charted_accountant.phn_no %></td>
-        <td><%= charted_accountant.address %></td>
-        <td><%= charted_accountant.email %></td>
-        <td><%= charted_accountant.firm_name %></td>
-        <td><%= charted_accountant.ca_no %></td>
-        <td><%= link_to 'Show', charted_accountant %></td>
-        <td><%= link_to 'Edit', edit_charted_accountant_path(charted_accountant) %></td>
-        <td><%= link_to 'Destroy', charted_accountant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+                                  <% @charted_accountants.each_with_index do |charted_accountant,i| %>
+                                    <tr> 
+                                      <td><%=i+1 %></td>
+                                      <td><%= charted_accountant.name %></td>
+                                      <td><%= charted_accountant.phn_no %></td>
+                                      <td><%= charted_accountant.address %></td>
+                                      <td><%= charted_accountant.email %></td>
+                                      <td><%= charted_accountant.firm_name %></td>
+                                      <td><%= charted_accountant.ca_no %></td>
+                                      <td><%= link_to 'Show', charted_accountant %></td>
+                                      <td><%= link_to 'Edit', edit_charted_accountant_path(charted_accountant) %></td>
+                                      <td><%= link_to 'Destroy', charted_accountant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                    </tr>
+                                  <% end %>
+                                </tbody>
                               </table>
                             </div>
 

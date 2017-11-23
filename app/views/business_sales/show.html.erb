@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Invoice date:</strong>
+  <%= @business_sale.invoice_date %>
+</p>
+
+<p>
+  <strong>Serial no:</strong>
+  <%= @business_sale.serial_no %>
+</p>
+
+<p>
+  <strong>Gstin no:</strong>
+  <%= @business_sale.gstin_no %>
+</p>
+
+<p>
+  <strong>Eway bill:</strong>
+  <%= @business_sale.eway_bill %>
+</p>
+
+<p>
+  <strong>Transportation mode:</strong>
+  <%= @business_sale.transportation_mode %>
+</p>
+
+<p>
+  <strong>Vehicle no:</strong>
+  <%= @business_sale.vehicle_no %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @business_sale.date %>
+</p>
+
+<p>
+  <strong>Time of supply:</strong>
+  <%= @business_sale.time_of_supply %>
+</p>
+
+<p>
+  <strong>Place of supply:</strong>
+  <%= @business_sale.place_of_supply %>
+</p>
+
+<p>
+  <strong>Total invoice:</strong>
+  <%= @business_sale.total_invoice %>
+</p>
+
+<%= link_to 'Edit', edit_business_sale_path(@business_sale) %> |
+<%= link_to 'Back', business_sales_path %>
