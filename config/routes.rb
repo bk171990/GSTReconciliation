@@ -51,6 +51,10 @@ Rails.application.routes.draw do
     collection do
       get :index
     end
+    member do
+     get :change_password
+     patch :update_password
+    end
   end
   
   resources :home do

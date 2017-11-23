@@ -21,17 +21,7 @@
                                 <thead>
                                   <tr>
                                     <th>Party name</th>
-                                    <th>Party gstin no</th>
-                                    <th>Party arn no</th>
-                                    <th>Party address</th>
-                                    <th>Place of supply</th>
-                                    <th>Commodity name</th>
-                                    <th>Tarrif no</th>
-                                    <th>HSN No</th>
-                                    <th>Rate of Tax</th>
-                                    <th>Name Service</th>
-                                    <th>Service Acc Code</th>
-                                    <th>Pan No</th>
+                                    
                                     <th>State Name</th>
                                     <th>State Code</th>
                                     <th>CA Name</th>
@@ -47,17 +37,6 @@
                                 
                                   <tr>
                                       <td><%= @parties.party_name %></td>
-                                      <td><%= @parties.party_gstin_no %></td>
-                                      <td><%= @parties.party_arn_no %></td>
-                                      <td><%= @parties.party_address %></td>
-                                      <td><%= @parties.place_of_supply %></td>
-                                      <td><%= @parties.commodity_name %></td>
-                                      <td><%= @parties.tarrif_no %></td>
-                                      <td><%= @parties.hsn_no %></td>
-                                      <td><%= @parties.rate_of_tax %></td>
-                                      <td><%= @parties.name_service %></td>
-                                      <td><%= @parties.service_acc_code %></td>
-                                      <td><%= @parties.party_pan_no %></td>
                                       <td><%= @parties.state_name %></td>
                                       <td><%= @parties.state_code %></td>
                                       <td><%= @parties.ca_name %></td>
@@ -69,17 +48,6 @@
                                   <% @parties.each do |party| %>
                                     <tr>
                                       <td><%= party.party_name %></td>
-                                      <td><%= party.party_gstin_no %></td>
-                                      <td><%= party.party_arn_no %></td>
-                                      <td><%= party.party_address %></td>
-                                      <td><%= party.place_of_supply %></td>
-                                      <td><%= party.commodity_name %></td>
-                                      <td><%= party.tarrif_no %></td>
-                                      <td><%= party.hsn_no %></td>
-                                      <td><%= party.rate_of_tax %></td>
-                                      <td><%= party.name_service %></td>
-                                      <td><%= party.service_acc_code %></td>
-                                      <td><%= party.party_pan_no %></td>
                                       <td><%= party.state_name %></td>
                                       <td><%= party.state_code %></td>
                                       <td><%= party.ca_name %></td>

@@ -1,8 +1,8 @@
  <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Basic Tabs</h3>
+                                <h3 class="panel-title">View Profile</h3>
                                 <div class="actions pull-right">
                                  <i class="fa fa-expand"></i>
                                     <i class="fa fa-chevron-down"></i>
@@ -12,14 +12,14 @@
                             <div class="panel-body">
                                 <div class="tab-wrapper tab-primary">
                                     <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#home1" data-toggle="tab">Home</a>
+                                        <li class="active"><a href="#home1" data-toggle="tab">Profile</a>
                                         </li>
                                        <!--  <li><a href="#profile1" data-toggle="tab">Profile</a>
                                         </li> -->
                                         <li class="dropdown">
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown <span class="caret"></span></a>
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Change Password <span class="caret"></span></a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="/users/1">Update Password</a>
+                                                <li><a href="/users/1/change_password">Update Password</a>
                                                 </li>
                                                <!--  <li><a href="#">Edit Password</a>
                                                 </li>
@@ -33,7 +33,7 @@
                                         <div class="tab-pane active" id="home1">
                                             
                                         <label class="col-sm-6 control-label">Email Id:</label>
-                                            <p><%=@user.email%> </p>
+                                            <p><%= @user.email%> </p>
                                         <label class="col-sm-6 control-label">Role:</label>
                                             <p><%=@user.role%> </p>
                                         </div>

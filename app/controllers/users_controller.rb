@@ -62,6 +62,7 @@ class UsersController < ApplicationController
   # and it accepts a hash containing the attributes that you want to update.
   # and perform authorization
   def update_password
+    byebug
     @user = User.shod(params[:id])
     if @user.update(user_params)
       redirect_to user_path(@user)

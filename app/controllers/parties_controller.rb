@@ -47,8 +47,8 @@ class PartiesController < ApplicationController
       end
      end
     @party.save
-     
-      redirect_to @party
+    @user = User.create!(first_name: @party.party_name, username: @party.email, party_id: @party.id, password: @party.party_no, role: 'Party', email: @party.email)
+    redirect_to party_path
     end
   
 
