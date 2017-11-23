@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dogns: MyString
+  item_hsn_no: MyString
+  uom: MyString
+  qty: MyString
+  rate: MyString
+  taxable_value: MyString
+
+two:
+  dogns: MyString
+  item_hsn_no: MyString
+  uom: MyString
+  qty: MyString
+  rate: MyString
+  taxable_value: MyString

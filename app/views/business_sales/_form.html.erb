@@ -1,0 +1,67 @@
+<%= form_with(model: business_sale, local: true) do |form| %>
+  <% if business_sale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(business_sale.errors.count, "error") %> prohibited this business_sale from being saved:</h2>
+
+      <ul>
+      <% business_sale.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :invoice_date %>
+    <%= form.date_select :invoice_date, id: :business_sale_invoice_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :serial_no %>
+    <%= form.text_field :serial_no, id: :business_sale_serial_no %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gstin_no %>
+    <%= form.text_field :gstin_no, id: :business_sale_gstin_no %>
+  </div>
+
+  <div class="field">
+    <%= form.label :eway_bill %>
+    <%= form.text_field :eway_bill, id: :business_sale_eway_bill %>
+  </div>
+
+  <div class="field">
+    <%= form.label :transportation_mode %>
+    <%= form.text_field :transportation_mode, id: :business_sale_transportation_mode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vehicle_no %>
+    <%= form.text_field :vehicle_no, id: :business_sale_vehicle_no %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date, id: :business_sale_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_of_supply %>
+    <%= form.text_field :time_of_supply, id: :business_sale_time_of_supply %>
+  </div>
+
+  <div class="field">
+    <%= form.label :place_of_supply %>
+    <%= form.text_field :place_of_supply, id: :business_sale_place_of_supply %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_invoice %>
+    <%= form.text_field :total_invoice, id: :business_sale_total_invoice %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

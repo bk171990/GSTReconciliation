@@ -1,0 +1,84 @@
+<div class="pageheader">
+                <h1>New Customer</h1>
+                <div class="breadcrumb-wrapper hidden-xs">
+                    <span class="label">You are here:</span>
+                    <ol class="breadcrumb">
+                        <li><a href="/">Dashboard</a>
+                        </li>
+                        <li>Forms</li>
+                        <li class="active">New Customer</li>
+                    </ol>
+                </div>
+            </div>
+            <section id="main-content" class="animated fadeInUp">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">New Customer>
+                                <div class="actions pull-right">
+                                 <i class="fa fa-expand"></i>
+                                    <i class="fa fa-chevron-down"></i>
+                                    <i class="fa fa-times"></i>
+                                </div>
+                            </div>
+                           <div class="panel-body">
+                            <%=form_for :customer_item,  do |f|%>
+
+                                <form class="form-horizontal">
+                                  <div class="form-group">
+                                    <div class="col-sm-3">
+                                      <label class="col-sm-6 control-label">Search Customers</label>                    <%=f.select :ids ,Customer.all.collect{|i| [i.customer_name, i.id]}, {prompt:true},class: "form-control form-control selectpicker", "data-live-search" => "true"%>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <div class="col-sm-3">
+                                      <label class="col-sm-6 control-label">Search items</label>   
+                                        <%=f.select :item_id ,Item.all.collect{|i| [i.dogns, i.id]}, {prompt:true},class: "form-control "%>
+                                    </div>
+                                  </div>
+
+                                          <div class="col-md-2">
+                                              <label for="text_input" class="label_height">Quantity</label>
+                                              <input type="qty" name="qty" id="qty"></td>
+                                            </div>
+
+
+                                  <br><br><br><br><br>
+
+                                  <div class="panel-body">
+                                        <div class="col-sm-offset-3 col-sm-12">
+                                        <%= f.submit class: "btn btn-success"%>
+                                        <%= link_to 'Back', customers_path,class: "btn btn-primary" %>
+                                        </div>
+                                    </div>
+                                <%end%>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+
+
+ <% content_for :javascript do %>
+                   <!--Load these page level functions-->
+<script type="text/javascript">
+  $("#customer_item_item_id").on("change", function() {
+    var item_id;
+    Item = $(this).val();
+    $.ajax({
+      url: "/items/load_item_data",
+      type: "GET",
+      data: {item_id: Item },
+      dataType: "json"
+     }).done(function (data) {
+     console.log(data);
+      $("#qty").val(data[0]);
+     
+    });
+  });
+</script>
+            <% end %>

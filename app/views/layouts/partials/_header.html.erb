@@ -2,7 +2,7 @@
   <div class="brand">
      <a href="/" class="logo">
        <i class="icon-layers"></i>
-    <span>NEU</span>BOARD</a>
+    <span>GST</span>App</a>
  </div>
 <!--logo end-->
             <ul class="nav navbar-nav navbar-left">
@@ -26,44 +26,85 @@
                 <li class="dropdown profile hidden-xs">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="meta">
-                            <span class="avatar">
-                                <img src="<%= image_path('profile.jpg') %>" class="img-circle" alt="">
-                            </span>
-                        <span class="text">Mike Adams</span>
+                            <div class="avatar">
+                            <img class="img-circle profile-image" 
+                            <%if current_user.role == 'SuperAdmin'%>
+                              <%= image_tag current_user.image%>
+                            <%elsif current_user.role == 'ChartedAccountant'%>
+                              <%= image_tag current_user.charted_accountant.image%>
+                            <%elsif current_user.role == 'Party'%>
+                            <%= image_tag "1.png" %>
+                            <%else%>
+                              <%= image_tag current_user.try(:party).try(:image)%>
+                            <%end%>
+                    <i class="on border-dark animated bounceIn"></i>
+                </div>
+
+                    <%if current_user.role == 'SuperAdmin'%>
+                        <span class="text">Super Admin</span>
                         <span class="caret"></span>
                         </span>
+                    <%elsif current_user.role == 'ChartedAccountant'%>
+                        <span class="text"><%=current_user.charted_accountant.name%></span>
+                        <span class="caret"></span>
+                        </span>
+
+                    <%else current_user.role == 'Party'%>
+                        <span class="text"><%=current_user.party.party_name%></span>
+                        <span class="caret"></span>
+                        </span>
+                    <%end%>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight" role="menu">
                         <li>
                             <span class="arrow top"></span>
                             <h5>
-                                <span>80%</span>
-                                <small class="text-muted">Profile complete</small>
+                               <!--  <span>80%</span>
+                                <small class="text-muted">Profile complete</small> -->
                             </h5>
                             <div class="progress progress-xs">
-                                <div class="progress-bar progress-bar" style="width: 80%">
+                                <!-- <div class="progress-bar progress-bar" style="width: 80%"> -->
                                 </div>
                             </div>
                         </li>
                         <li class="divider"></li>
-                        <li>
-                            <a href="javascript:void(0);">
-                                <span class="icon"><i class="fa fa-user"></i>
-                                </span>My Account</a>
-                        </li>
-                        <li>
+                        <%if current_user.role == 'SuperAdmin'%>
+                          <li>
+                            <a href="/users/1">
+                              <span class="icon"><i class="fa fa-user"></i>
+                              </span>My Account</a>
+                          </li>
+
+                        <%elsif current_user.role == 'ChartedAccountant'%>
+                          <li>
+                            <a href="/charted_accountants/">
+                              <span class="icon"><i class="fa fa-user"></i>
+                              </span>My Account</a>
+                          </li>
+                        <%else current_user.role == 'Party'%>
+                          <li>
+                            <a href="/parties/">
+                              <span class="icon"><i class="fa fa-user"></i>
+                              </span>My Account</a>
+                          </li>
+                        <%end%>
+                        <!-- <li>
                             <a href="javascript:void(0);">
                                 <span class="icon"><i class="fa fa-envelope"></i>
                                 </span>Messages</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);">
+                        </li> -->
+
+                        <%if current_user.role == 'SuperAdmin'%>
+                          <li>
+                            <a href="/users/1">
                                 <span class="icon"><i class="fa fa-cog"></i>
                                 </span>Settings</a>
-                        </li>
+                          </li>
+                        <%end%>
+
                         <li class="divider"></li>
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="/users/sign_out">
                                 <span class="icon"><i class="fa fa-sign-out"></i>
                                 </span>Logout</a>
                         </li>

@@ -1,0 +1,252 @@
+<div class="pageheader">
+                <h1>New Customer</h1>
+                <div class="breadcrumb-wrapper hidden-xs">
+                    <span class="label">You are here:</span>
+                    <ol class="breadcrumb">
+                        <li><a href="/">Dashboard</a>
+                        </li>
+                        <li>Forms</li>
+                        <li class="active">New Customer</li>
+                    </ol>
+                </div>
+            </div>
+            <section id="main-content" class="animated fadeInUp">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">New Customer
+                                <div class="actions pull-right">
+                                 <i class="fa fa-expand"></i>
+                                    <i class="fa fa-chevron-down"></i>
+                                    <i class="fa fa-times"></i>
+                                </div>
+                            </div>
+                           <div class="panel-body">
+                        
+                        <%= form_for @invoice do |f| %>
+                        
+
+                                <form class="form-horizontal">
+                                  <div class="form-group">
+                                  
+
+                                  <div class="form-group">
+                                    <div class="col-sm-3">
+                                      <label class="col-sm-10 control-label">Search Customers</label>                  <%=f.select :customer_id ,Customer.all.collect{|i| [i.customer_name, i.id]}, {prompt:true},class: "form-control"%>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                       <div class="col-sm-3">
+                                         <label class="col-sm-6 control-label">Invoices</label>
+                                           <%= f.text_field :invoice_no,value: @invoice.invoice_no, class: "form-control", placeholder: "No.", readonly:true%>
+                                       </div>
+                                    </div>
+                                  
+
+                                   <div class="form-group">
+                                    <div class="col-sm-3">
+                                      <label class="col-sm-6 control-label">Address</label>   
+                                        <input type="address" name="address" id="address"></td>
+                                    </div>
+                                   </div>
+
+                                   <div class="form-group">
+                                    <div class="col-sm-3">
+                                      <label class="col-sm-6 control-label">GST-IN No</label>   
+                                        <input type="gstin_no_reg" name="gstin_no_reg" id="gstin_no_reg"></td>
+                                    </div>
+                                   </div>
+
+                                   <div class="form-group">
+                                    <div class="col-sm-3">
+                                      <label class="col-sm-6 control-label">PAN No</label>   
+                                        <input type="cust_pan_no" name="cust_pan_no" id="cust_pan_no"></td>
+                                    </div>
+                                   </div>
+
+                                   
+                  <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Search Items</h3>
+                            <div class="actions pull-right">
+                             <i class="fa fa-expand"></i>
+                                <i class="fa fa-chevron-down"></i>
+                                <i class="fa fa-times"></i>
+                            </div>
+                          </div>
+                          <div class="panel-body">
+                            <div class="table-responsive">
+                              <table class="table table-bordered table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Search Item</th>
+                                    <th>Quantity</th>
+                                    <th>Uom</th>
+                                    <th>Rate</th>
+                                    <th>CGST(9)%</th>
+                                    <th>SGST(9%)</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                 <tbody>
+                              <tr>
+                                <%= f.fields_for :invoice_items do |v|%>
+
+                                  <div class="form-group">
+                                    <div class="col-sm-3">
+                                      <td><%=v.select :item_id ,Item.all.collect{|i| [i.dogns,i.rate, i.id]}, {prompt:true},class: "form-control"%></td>
+                                       </div>
+                                    </div>
+                                    </div>
+                                  </div>
+
+                                   <div class="form-group">
+                                    <div class="col-sm-3">
+                                        <td><%=text_field_tag :qty%></td>
+                                    </div>
+                                   </div>
+
+                                   <div class="form-group">
+                                    <div class="col-sm-3">
+                                      <td><%=text_field_tag :uom %></td>
+                                    </div>
+                                   </div>
+
+                                   <div class="form-group">
+                                    <div class="col-sm-3">
+                                      <td><%=text_field_tag :rate%></td>
+                                    </div>
+                                   </div>
+
+                                   <div class="form-group">
+                                    <div class="col-sm-3">
+                                      <td><%=text_field_tag :cgst%></td>
+                                    </div>
+                                   </div>
+
+                                   <div class="form-group">
+                                    <div class="col-sm-3">
+                                      <td><%=text_field_tag :sgst%></td>
+                                    </div>
+                                   </div>
+
+                                </tr>
+                            
+                                   <br><br>
+                                   <br><br>
+                                <%end%>
+
+                              </tbody>
+                            </table>
+                            <div class="panel-body">
+                                        <div class="col-sm-offset-3 col-sm-12">
+                                        <%= f.submit "Add",:name => "add_item", class: "btn btn-success"%>
+                                    
+                                        <%= link_to 'Back', customers_path,class: "btn btn-primary" %>
+                                        <%= f.submit "Save",class: "btn btn-primary" %>
+                                        </div>
+                                          </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                                 
+                                <%end%>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        
+
+
+
+<% content_for :javascript do %>
+<script type="text/javascript">
+
+$(document).ready(function() {
+  $('select#invoice_customer_id').select2({
+    placeholder: "Choose a person",
+    allowClear: true
+  });
+});
+</script>
+<% end %>
+
+<% content_for :javascript do %>
+<script type="text/javascript">
+  $("#invoice_customer_id").on("change", function() {
+    var customer_id;
+    Item = $(this).val();
+    $.ajax({
+      url: "/customers/load_customer_data",
+      type: "GET",
+      data: {customer_id: Item },
+      dataType: "json"
+     }).done(function (data) {
+     console.log(data);
+      $("#address").val(data[0]);
+      $("#gstin_no_reg").val(data[1]);
+      $("#cust_pan_no").val(data[2]);
+     
+    });
+  });
+</script>
+<% end %>
+
+ 
+
+<% content_for :javascript do %>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('select#invoice_invoice_items_attributes_0_item_id').select2({
+
+  
+  });
+});
+</script>
+<% end %>
+
+<% content_for :javascript do %>
+<script type="text/javascript">
+  $("select#invoice_invoice_items_attributes_0_item_id").on("change", function() {
+    var item_id;
+    Item = $(this).val();
+    $.ajax({
+      url: "/items/load_item_data",
+      type: "GET",
+      data: {item_id: Item },
+      dataType: "json"
+     }).done(function (data) {
+     console.log(data);
+      $("#qty").val(data[0]);
+      $("#uom").val(data[1]);
+      $("#rate").val(data[2]);
+      $("#cgst").val(data[3]);
+      $("#sgst").val(data[4]);
+    });
+  });
+</script>
+<% end %>
+
+
+
+
+
+
+<!--   <tbody class='tasks'>
+<ol>
+<%#= render 'task_fields', f: contributor %>
+<%# end %>
+</ol>
+<%#= link_to_add_association "add", f, :invoice_items %>
+</tbody>
+ -->

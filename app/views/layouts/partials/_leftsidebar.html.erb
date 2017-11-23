@@ -1,38 +1,70 @@
  <div class="sidebar-profile">
                 <div class="avatar">
-                    <img class="img-circle profile-image" src="<%= image_path('profile.jpg') %>" alt="profile">
+                    <img class="img-circle profile-image" 
+                    <%if current_user.role == 'SuperAdmin'%>
+                      <%= image_tag current_user.image%>
+                    <%elsif current_user.role == 'ChartedAccountant'%>
+                      <%= image_tag current_user.charted_accountant.image%>
+                    <%elsif current_user.role == 'Party'%>
+                    <%= image_tag "1.png" %>
+                    <%else%>
+                      <%= image_tag current_user.try(:party).try(:image)%>
+                    <%end%>
                     <i class="on border-dark animated bounceIn"></i>
                 </div>
                 <div class="profile-body dropdown">
-                      <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>Mike Adams <span class="caret"></span></h4></a>
-                    <small class="title">Front-end Developer</small>
+                      <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <%if current_user.role == 'SuperAdmin'%>
+                        <h4>SuperAdmin <span class="caret"></span></h4>
+                      <%elsif current_user.role == 'ChartedAccountant'%>
+                        <h4><%=current_user.charted_accountant.name%><span class="caret"></span></h4>
+                      <%elsif current_user.role == 'Party'%>
+                        <h4><%=current_user.party.party_name%><span class="caret"></span></h4>
+                      </a>
+                      <%end%>
+                    <!-- <small class="title">CA</small> -->
                     <ul class="dropdown-menu animated fadeInRight" role="menu">
                         <li class="profile-progress">
                             <h5>
-                                <span>80%</span>
-                                <small>Profile complete</small>
+                                <!-- <span>80%</span>
+                                <small>Profile complete</small> -->
                             </h5>
-                            <div class="progress progress-xs">
+                            <!-- <div class="progress progress-xs">
                                 <div class="progress-bar progress-bar-primary" style="width: 80%">
                                 </div>
-                            </div>
+                            </div> -->
                         </li>
                         <li class="divider"></li>
-                        <li>
-                            <a href="javascript:void(0);">
-                                <span class="icon"><i class="fa fa-user"></i>
-                                </span>My Account</a>
-                        </li>
-                       <!--  <li>
-                            <a href="javascript:void(0);">
-                                <span class="icon"><i class="fa fa-envelope"></i>
-                                </span>Messages</a>
-                        </li> -->
-                        <li>
-                            <a href="javascript:void(0);">
+                        <%if current_user.role == 'SuperAdmin'%>
+                          <li>
+                            <a href="/users/1">
+                              <span class="icon"><i class="fa fa-user"></i>
+                              </span>My Account</a>
+                          </li>
+
+                        <%elsif current_user.role == 'ChartedAccountant'%>
+                          <li>
+                            <a href="/charted_accountants/">
+                              <span class="icon"><i class="fa fa-user"></i>
+                              </span>My Account</a>
+                          </li>
+                        <%else current_user.role == 'Party'%>
+                          <li>
+                            <a href="/parties/">
+                              <span class="icon"><i class="fa fa-user"></i>
+                              </span>My Account</a>
+                          </li>
+                        <%end%>
+                        
+                     
+
+                        <%if current_user.role == 'SuperAdmin'%>
+                          <li>
+                            <a href="/users/1">
                                 <span class="icon"><i class="fa fa-cog"></i>
                                 </span>Settings</a>
-                        </li>
+                          </li>
+                        <%end%>
                         <li class="divider"></li>
                         <li>
                             <a href="/users/sign_out">
@@ -50,6 +82,7 @@
                             <i class="fa  fa-fw fa-tachometer"></i> Dashboard
                         </a>
                     </li>
+                    <%if current_user.role == 'SuperAdmin'%>
                     <li class="nav-dropdown <%= 'active open' if controller?('ui')%>">
                         <a href="#">
                             <i class="fa fa-fw fa-cogs"></i> Super Admin
@@ -62,12 +95,12 @@
                             </li>
 
                             <li class="<%= 'active' if controller?('ui') && action?('buttons') %>">
-                                <a href="/charted_accountants/new">
+                                <a href="/charted_accountants">
                                      CA
                                 </a>
                             </li>
                             <li class="<%= 'active' if controller?('ui') && action?('sliders_progress') %>">
-                                <a href="/parties/new">
+                                <a href="/parties">
                                      Party
                                 </a>
                             </li>
@@ -77,46 +110,17 @@
                                      Reports
                                 </a>
                             </li>
-                            <!--        <li class="<%= 'active' if controller?('ui') && action?('tabs_accordions') %>">
-                                <a href="/ui/tabs_accordions">
-                                     Tabs &amp; Accordions
-                                </a>
-                            </li>
-                                   <li class="<%= 'active' if controller?('ui') && action?('alerts_notifications') %>">
-                                <a href="/ui/alerts_notifications">
-                                     Alerts &amp; Notifications
-                                </a>
-                            </li>
-                                   <li class="<%= 'active' if controller?('ui') && action?('nestable_lists') %>">
-                                <a href="/ui/nestable_lists">
-                                      Nestable Lists
-                                </a>
-                            </li>
-                                   <li class="<%= 'active' if controller?('ui') && action?('panels') %>">
-                                <a href="/ui/panels">
-                                     Panels
-                                </a>
-                            </li>
-                                   <li class="<%= 'active' if controller?('ui') && action?('icons') %>">
-                                <a href="/ui/icons">
-                                    Icons
-                                </a>
-                            </li>
-                                   <li class="<%= 'active' if controller?('ui') && action?('typography') %>">
-                                <a href="/ui/typography">
-                                    Typography
-                                </a>
-                            </li> -->
-                        </ul>
-                    </li>
+                            
+                       <%elsif current_user.role == 'ChartedAccountant'%>
+                    
                      <li class="nav-dropdown <%= 'active open' if controller?('forms')%>">
                         <a href="#">
                             <i class="fa fa-fw fa-edit"></i> CA
                         </a>
                         <ul class="nav-sub">
                             <li class="<%= 'active' if controller?('forms') && action?('components') %>">
-                                <a href="/forms/components">
-                                     General Setting
+                                <a href="/parties">
+                                     Create New Party
                                 </a>
                             </li>
                             <li class="<%= 'active' if controller?('forms') && action?('validation') %>">
@@ -129,143 +133,46 @@
                                     Party Reports
                                 </a>
                             </li>
-                          <!--          <li class="<%= 'active' if controller?('forms') && action?('wizard') %>">
-                                <a href="/forms/wizard">
-                                    Wizard
-                                </a>
-                                   <li class="<%= 'active' if controller?('forms') && action?('wysiwyg') %>">
-                                <a href="/forms/wysiwyg">
-                                     WYSIWYG Editor
-                                </a>
-                            </li> -->
+                         
                         </ul>
                     </li>
-                   <!--  <li class="nav-dropdown <%= 'active open' if controller?('tables')%>">
-                        <a href="#">
-                            <i class="fa fa-fw fa-th-list"></i> Tables
-                        </a>
-                        <ul class="nav-sub">
-                            <li class="<%= 'active' if controller?('tables') && action?('basic_tables') %>">
-                                <a href="/tables/basic_tables">
-                                      Basic Tables
-                                </a>
-                            </li>
-                            <li class="<%= 'active' if controller?('tables') && action?('data_tables') %>">
-                                <a href="/tables/data_tables">
-                                      Data Tables
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                  <li class="nav-dropdown <%= 'active open' if controller?('charts')%>">
-                        <a href="#">
-                            <i class="fa fa-fw fa-bar-chart-o"></i> Charts
-                        </a>
-                        <ul class="nav-sub">
-                            <li class="<%= 'active' if controller?('charts') && action?('chartjs') %>">
-                                <a href="/charts/chartjs">
-                                     Chartjs
-                                </a>
-                            </li>
-                            <li class="<%= 'active' if controller?('charts') && action?('c3') %>">
-                                <a href="/charts/c3">
-                                      C3 Charts
-                                </a>
-                            </li>
-                            <li class="<%= 'active' if controller?('charts') && action?('sparkline') %>">
-                                <a href="/charts/sparkline">
-                                      Sparkline Charts
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-dropdown <%= 'active open' if controller?('mail')%>">
-                        <a href="#">
-                            <i class="fa fa-fw fa-envelope-o"></i> Mail
-                        </a>
-                        <ul class="nav-sub">
-                            <li class="<%= 'active' if controller?('mail') && action?('inbox') %>">
-                                <a href="/mail/inbox">
-                                     Inbox
-                                </a>
-                            </li>
-                            <li class="<%= 'active' if controller?('mail') && action?('compose') %>">
-                                <a href="/mail/compose">
-                                       Compose Mail
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-dropdown <%= 'active open' if controller?('maps')%>">
-                        <a href="#">
-                            <i class="fa fa-fw fa-map-marker"></i> Maps
-                        </a>
-                        <ul class="nav-sub">
-                            <li class="<%= 'active' if controller?('maps') && action?('google') %>">
-                                <a href="/maps/google">
-                                      Google Maps
-                                </a>
-                            </li>
-                            <li class="<%= 'active' if controller?('maps') && action?('vector') %>">
-                                <a href="/maps/vector">
-                                       Vector Maps
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                      <li>
-                        <a href="http://authenticgoods.co/wrapbootstrap/themes/neuboard-v1.4/Frontend/">
-                            <i class="fa  fa-fw fa-desktop"></i> Front-end Theme
-                            <span class="pull-right badge badge-danger">new</span>
-                        </a>
-                    </li>
-                    <li class="nav-dropdown <%= 'active open' if controller?('pages')%>">
-                        <a href="#">
-                            <i class="fa fa-fw fa-file-text"></i> Pages
-                        </a>
-                        <ul class="nav-sub">
-                            <li class="<%= 'active' if controller?('pages') && action?('blank_page') %>">
-                                <a href="/pages/blank_page">
-                                       Blank Page
-                                </a>
-                            </li>
-                            <li class="<%= 'active' if controller?('pages') && action?('profile') %>">
-                                <a href="/pages/profile">
-                                       Profile
-                                </a>
-                            </li>
-                          <li class="<%= 'active' if controller?('pages') && action?('signon') %>">
-                                <a href="/pages/signon">
-                                        Sign In
-                                </a>
-                            </li>
-                            <li class="<%= 'active' if controller?('pages') && action?('signup') %>">
-                                <a href="/pages/signup">
-                                        Sign Up
-                                </a>
-                            </li>
-                            <li class="<%= 'active' if controller?('pages') && action?('locked_screen') %>">
-                                <a href="/pages/locked_screen">
-                                        Locked Screen
-                                </a>
-                            </li>
-                            <li class="<%= 'active' if controller?('pages') && action?('page404') %>">
-                                <a href="/pages/page404">
-                                        404 Page
-                                </a>
-                            </li>
-                            <li class="<%= 'active' if controller?('pages') && action?('page500') %>">
-                                <a href="/pages/page500">
-                                        500 Page
-                                </a>
-                            </li>
-                        </ul>
-                    </li> -->
+                    <%else current_user.role == 'Party'%>
+                
                     <li class="nav-dropdown">
                         <a href="#" title="Menu Levels">
                             <i class="fa  fa-fw fa-folder-open"></i> Party
                         </a>
                         <ul class="nav-sub">
+
+                        <li class="<%= 'active' if controller?('ui') && action?('buttons') %>">
+                                <a href="/parties">
+                                     View Profile
+                                </a>
+                        </li>
+
+                        <li class="<%= 'active' if controller?('ui') && action?('buttons') %>">
+                                <a href="/customers/new">
+                                     Create Customer
+                                </a>
+                        </li>
+                        <!-- <li class="<%= 'active' if controller?('ui') && action?('buttons') %>">
+                                <a href="/parties/new">
+                                     Register
+                                </a>
+                        </li> -->
+
+                        <li class="<%= 'active' if controller?('ui') && action?('buttons') %>">
+                                <a href="/items">
+                                     Add Items
+                                </a>
+                        </li>
+
+                        <li class="<%= 'active' if controller?('ui') && action?('buttons') %>">
+                                <a href="/invoices/new">
+                                     Generate Invoice
+                                </a>
+                        </li>
+
 
                         <li class="nav-dropdown">
                                 <a href="#" title="Level 2.3">
@@ -371,3 +278,4 @@
                     </div>
                 </div>
             </div>
+            <%end%>

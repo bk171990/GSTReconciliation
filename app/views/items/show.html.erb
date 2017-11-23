@@ -1,0 +1,54 @@
+
+        <section class="main-content-wrapper">
+                  <div class="pageheader">
+                <h1>View All Details</h1>
+                <div class="breadcrumb-wrapper hidden-xs">
+                    <span class="label">You are here:</span>
+                    <ol class="breadcrumb">
+                        <li><a href="/">Dashboard</a>
+                        </li>
+                        <li class="active">View All CA Details</li>
+                    </ol>
+                </div>
+            </div>
+            <section id="main-content" class="animated fadeInUp">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+<p>
+  <strong>Dogns:</strong>
+  <%= @item.dogns %>
+</p>
+
+<p>
+  <strong>Item hsn no:</strong>
+  <%= @item.item_hsn_no %>
+</p>
+
+<p>
+  <strong>Uom:</strong>
+  <%= @item.uom %>
+</p>
+
+<p>
+  <strong>Qty:</strong>
+  <%= @item.qty %>
+</p>
+
+<p>
+  <strong>Rate:</strong>
+  <%= @item.rate %>
+</p>
+
+<p>
+  <strong>Taxable value:</strong>
+  <%= @item.taxable_value %>
+</p>
+          </div>
+                        </div>
+                    </div>
+                </div>
+
+<%= link_to 'Edit', edit_item_path(@item),class: "btn btn-primary" %> |
+<%= link_to 'Back', items_path,class: "btn btn-primary" %>

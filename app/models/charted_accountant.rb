@@ -2,10 +2,11 @@ class ChartedAccountant < ApplicationRecord
     
     after_save :create_user_account
     has_attached_file :image
+    has_many :users
+    has_many :parties
     validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
     def create_user_account
-      byebug
     	@user = User.create!(first_name: self.name, username: self.email, charted_accountant_id: self.id, password: self.ca_no, role: 'ChartedAccountant', email: self.email)
     end
 

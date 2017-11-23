@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_name: MyString
+  gstin_no_reg: MyString
+  arn_no: MyString
+  address: MyString
+  cust_place_of_supply: MyString
+  cust_name_of_commodity_supplied: MyString
+  cust_tarrif_no: MyString
+  cust_rate_of_tax: MyString
+  cust_name_of_service: MyString
+  cust_serv_acc_code: MyString
+  cust_pan_no: MyString
+
+two:
+  customer_name: MyString
+  gstin_no_reg: MyString
+  arn_no: MyString
+  address: MyString
+  cust_place_of_supply: MyString
+  cust_name_of_commodity_supplied: MyString
+  cust_tarrif_no: MyString
+  cust_rate_of_tax: MyString
+  cust_name_of_service: MyString
+  cust_serv_acc_code: MyString
+  cust_pan_no: MyString

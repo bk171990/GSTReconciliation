@@ -5,21 +5,25 @@ class ChartedAccountantsController < ApplicationController
   # GET /charted_accountants.json
   def index
     @charted_accountants = ChartedAccountant.all
+    @general_setting = GeneralSetting.first
   end
 
   # GET /charted_accountants/1
   # GET /charted_accountants/1.json
   def show
+    @general_setting = GeneralSetting.first
   end
 
   # GET /charted_accountants/new
   def new
+    @general_setting = GeneralSetting.first
     @charted_accountant = ChartedAccountant.new
     @charted_accountant.ca_no = ChartedAccountant.set_ca_no
   end
 
   # GET /charted_accountants/1/edit
   def edit
+    @general_setting = GeneralSetting.first
   end
 
   # POST /charted_accountants
@@ -59,6 +63,7 @@ class ChartedAccountantsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to charted_accountants_url, notice: 'Charted accountant was successfully destroyed.' }
       format.json { head :no_content }
+      @general_setting = GeneralSetting.first
     end
   end
 

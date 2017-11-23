@@ -4,7 +4,7 @@
 
                         <div class="panel panel-default">
                           <div class="panel-heading">
-                            <h3 class="panel-title">Responsive table</h3>
+                            <h3 class="panel-title">View All Parties</h3>
                             <div class="actions pull-right">
                              <i class="fa fa-expand"></i>
                                 <i class="fa fa-chevron-down"></i>
@@ -12,55 +12,55 @@
                             </div>
                           </div>
                           <div class="panel-body">
-
+                          <%if current_user.role == 'Party'%>
+                          <%else%>
+                             <%= link_to 'New Party', new_party_path, class: 'btn btn-link' %>
+                          <%end%>
                             <div class="table-responsive">
                               <table class="table table-bordered table-striped">
                                 <thead>
-    <tr>
-      <th>Party name</th>
-      <th>Party gstin no</th>
-      <th>Party arn no</th>
-      <th>Party address</th>
-      <th>Place of supply</th>
-      <th>Commodity name</th>
-      <th>Tarrif no</th>
-      <th>Hsn no</th>
-      <th>Rate of tax</th>
-      <th>Name service</th>
-      <th>Service acc code</th>
-      <th>Party pan no</th>
-      <th>State name</th>
-      <th>State code</th>
-      <th>Ca name</th>
-      <th>Ca contact</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+                                  <tr>
+                                    <th>Party name</th>
+                                    
+                                    <th>State Name</th>
+                                    <th>State Code</th>
+                                    <th>CA Name</th>
+                                    <th>CA Contact</th>
+                                    <th>Composite</th>
+                                    <th>Regular</th>
+                                    <th colspan="3"></th>
+                                  </tr>
+                                </thead>
 
-  <tbody>
-    <% @parties.each do |party| %>
-      <tr>
-        <td><%= party.party_name %></td>
-        <td><%= party.party_gstin_no %></td>
-        <td><%= party.party_arn_no %></td>
-        <td><%= party.party_address %></td>
-        <td><%= party.place_of_supply %></td>
-        <td><%= party.commodity_name %></td>
-        <td><%= party.tarrif_no %></td>
-        <td><%= party.hsn_no %></td>
-        <td><%= party.rate_of_tax %></td>
-        <td><%= party.name_service %></td>
-        <td><%= party.service_acc_code %></td>
-        <td><%= party.party_pan_no %></td>
-        <td><%= party.state_name %></td>
-        <td><%= party.state_code %></td>
-        <td><%= party.ca_name %></td>
-        <td><%= party.ca_contact %></td>
-        <td><%= link_to 'Show', party %></td>
-        <td><%= link_to 'Edit', edit_party_path(party) %></td>
-        <td><%= link_to 'Destroy', party, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+                                <tbody>
+                                <%if current_user.role == 'Party'%>
+                                
+                                  <tr>
+                                      <td><%= @parties.party_name %></td>
+                                      <td><%= @parties.state_name %></td>
+                                      <td><%= @parties.state_code %></td>
+                                      <td><%= @parties.ca_name %></td>
+                                      <td><%= @parties.ca_contact %></td>
+                                      <td><%= @parties.composite %></td>
+                                      <td><%= @parties.regular %></td>
+                                  </tr>
+                                <%else%>  
+                                  <% @parties.each do |party| %>
+                                    <tr>
+                                      <td><%= party.party_name %></td>
+                                      <td><%= party.state_name %></td>
+                                      <td><%= party.state_code %></td>
+                                      <td><%= party.ca_name %></td>
+                                      <td><%= party.ca_contact %></td>
+                                      <td><%= party.composite %></td>
+                                      <td><%= party.regular %></td>
+                                      <td><%= %></td>
+                                      <td><%= link_to 'Show', party %></td>
+                                      <td><%= link_to 'Edit', edit_party_path(party) %></td>
+                                      <td><%= link_to 'Destroy', party, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                    </tr>
+                                  <% end %>
+                                  <% end %>
   </tbody>
 </table>
 </div>
