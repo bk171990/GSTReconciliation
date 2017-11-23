@@ -15,5 +15,3 @@ test:
 production:
   <<: *default
   database: Gst_App_production
-  username: Gst_App
-  password: <%= ENV['GST_APP_DATABASE_PASSWORD'] %>
