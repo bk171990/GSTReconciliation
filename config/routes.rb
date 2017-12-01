@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :unit_of_measures
   resources :business_sales
   resources :customers do 
     collection do
@@ -10,10 +11,10 @@ Rails.application.routes.draw do
   end
 
   resources :invoices do
-    collection do
-      post :add
+    member do
+      get :show_invoice
     end
-  end
+    end
 
   resources :invoice_items do
     collection do
@@ -30,6 +31,8 @@ Rails.application.routes.draw do
     delete :destroy
   end
   end
+
+   get 'invoices/attributes_for/:model' => 'invoices#get_attributes_for'
   
   resources :items do
     collection do
@@ -44,7 +47,11 @@ Rails.application.routes.draw do
    end
   root 'home#dashboard'
   # get 'dashboard/index'
-
+  resources :tables do
+    collection do
+     get :basic_tables
+   end
+ end
   # defaults to dashboard
   # root :to => redirect('/dashboard')
   resources :users do

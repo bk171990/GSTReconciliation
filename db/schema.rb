@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121121511) do
+ActiveRecord::Schema.define(version: 20171129095258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20171121121511) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.boolean "status"
   end
 
   create_table "customer_items", force: :cascade do |t|
@@ -109,6 +110,13 @@ ActiveRecord::Schema.define(version: 20171121121511) do
     t.datetime "updated_at", null: false
     t.integer "item_id"
     t.string "number"
+    t.string "quantity"
+    t.string "net_amt"
+    t.decimal "tax_rate", precision: 10, scale: 2
+    t.decimal "tax_amt", precision: 10, scale: 2
+    t.string "total_amt"
+    t.string "item_descritption"
+    t.string "unit_price"
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -132,6 +140,9 @@ ActiveRecord::Schema.define(version: 20171121121511) do
     t.integer "customer_id"
     t.decimal "cgst"
     t.decimal "sgst"
+    t.decimal "igst"
+    t.bigint "unit_of_measure_id"
+    t.index ["unit_of_measure_id"], name: "index_items_on_unit_of_measure_id"
   end
 
   create_table "parties", force: :cascade do |t|
@@ -162,7 +173,14 @@ ActiveRecord::Schema.define(version: 20171121121511) do
     t.bigint "charted_accountant_id"
     t.string "composite"
     t.string "regular"
+    t.boolean "status"
     t.index ["charted_accountant_id"], name: "index_parties_on_charted_accountant_id"
+  end
+
+  create_table "unit_of_measures", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_charted_accountants", force: :cascade do |t|
@@ -204,6 +222,7 @@ ActiveRecord::Schema.define(version: 20171121121511) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "items", "unit_of_measures"
   add_foreign_key "parties", "charted_accountants"
   add_foreign_key "user_charted_accountants", "charted_accountants"
   add_foreign_key "user_charted_accountants", "users"

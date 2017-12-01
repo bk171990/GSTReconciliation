@@ -22,6 +22,8 @@ Rails.application.config.assets.precompile += %w( customer_items.css )
 Rails.application.config.assets.precompile += %w( customer_items.js )
 Rails.application.config.assets.precompile += %w( invoices.css )
 Rails.application.config.assets.precompile += %w( invoices.js )
+Rails.application.config.assets.precompile += %w( unit_of_measures.css )
+Rails.application.config.assets.precompile += %w( unit_of_measures.js )
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.

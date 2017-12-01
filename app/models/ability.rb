@@ -14,4 +14,5 @@ class Ability
     elsif user.role == 'Party'
       can [:read, :create, :update], :all
     end
+  end
 end

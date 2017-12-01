@@ -1,0 +1,24 @@
+<section class="main-content-wrapper">
+                  <div class="pageheader">
+                <h1>View All Details</h1>
+                <div class="breadcrumb-wrapper hidden-xs">
+                    <span class="label">You are here:</span>
+                    <ol class="breadcrumb">
+                        <li><a href="/">Dashboard</a>
+                        </li>
+                        <li class="active">Unit of Measure Details</li>
+                    </ol>
+                </div>
+            </div>
+            <section id="main-content" class="animated fadeInUp">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+<p>
+  <strong>Name:</strong>
+  <%= @unit_of_measure.name %>
+</p>
+
+<%= link_to 'Edit', edit_unit_of_measure_path(@unit_of_measure),class: "btn btn-primary" %> |
+<%= link_to 'Back', unit_of_measures_path,class: "btn btn-primary" %>

@@ -52,19 +52,14 @@
                                      <div class="form-group">
                                        <div class="col-sm-3">
                                         <label class="col-sm-6 control-label">UOM</label>
-                                          <%= f.text_field :uom, id: :item_uom, class: "form-control", placeholder: "UOM No." %>
+                                          <%= f.select :unit_of_measure_id, UnitOfMeasure.all.collect{|p| [p.name,p.id]}, {prompt:true},class: "form-control" %>
                                        </div>
                                     </div>
 
+                                 
                                     <div class="form-group">
                                       <div class="col-sm-3">
-                                        <label class="col-sm-6 control-label">Quantity</label>
-                                          <%= f.text_field :qty, id: :item_qty, class: "form-control" ,placeholder: "Qty" %>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <div class="col-sm-3">
-                                        <label class="col-sm-8 control-label">Rate</label>
+                                        <label class="col-sm-8 control-label">Unit Price</label>
                                           <%= f.text_field :rate, id: :item_rate, class: "form-control" ,placeholder: "Rate" %>
                                       </div>
                                     </div>
@@ -79,17 +74,18 @@
                                     <div class="form-group">
                                       <div class="col-sm-3">
                                         <label class="col-sm-8 control-label">SGST</label>
-                                          <%= f.text_field :sgst, id: :item_sgst, class: "form-control" ,placeholder: "CGST" %>
+                                          <%= f.text_field :sgst, id: :item_sgst, class: "form-control" ,placeholder: "SGST" %>
                                       </div>
                                     </div>
 
-                                    <div class="form-group">
+                                      <div class="form-group">
                                       <div class="col-sm-3">
-                                        <label class="col-sm-6 control-label">Taxable Value</label>
-                                          <%= f.text_field :taxable_value, id: :item_taxable_value, class: "form-control" ,placeholder: "Value" %>
+                                        <label class="col-sm-8 control-label">IGST</label>
+                                          <%= f.text_field :igst, id: :item_igst, class: "form-control" ,readonly:true,placeholder: "IGST" %>
                                       </div>
                                     </div>
 
+                                   
                                     <br><br><br><br><br><br>
                              
                                      <div class="panel-body">
@@ -105,3 +101,18 @@
                     </div>
                 </div>
         </section>
+
+
+
+<% content_for :javascript do %>
+ <script type='text/javascript'>
+   $(document).on("keyup", "#item_cgst, #item_sgst", function() {
+   var val1 = +$("#item_cgst").val();
+   var val2 = +$("#item_sgst").val();
+          $("#item_igst").val(val1+val2);
+  });
+
+
+
+</script>
+<%end%>

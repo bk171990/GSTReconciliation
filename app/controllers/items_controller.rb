@@ -13,13 +13,7 @@ class ItemsController < ApplicationController
 
   def load_item_data
     @item = Item.find_by_id(params[:item_id]).present? ? Item.find(params[:item_id]) : Item.unscoped.find_by_id(params[:item_id])
-    render :json => [ @item.qty || "" , @item.uom, @item.rate, @item.cgst, @item.sgst]
-    
-  end
-
-  # GET /items/1
-  # GET /items/1.json
-  def show
+    render :json => [ @item.rate, @item.cgst.to_f, @item.sgst.to_f, @item.dogns]
   end
 
   # GET /items/new
@@ -38,7 +32,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to items_path, notice: 'Item was successfully created.' }
+        format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
@@ -79,6 +73,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:dogns, :item_hsn_no, :uom, :qty, :rate, :taxable_value,:cgst,:sgst)
+      params.require(:item).permit(:unit_of_measure_id,:igst,:dogns, :item_hsn_no, :uom, :qty, :rate, :taxable_value,:cgst,:sgst)
     end
 end
