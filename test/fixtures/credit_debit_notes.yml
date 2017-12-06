@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_of_original_invoice: 2017-12-05
+  invoice_no: MyString
+  gstin_no: MyString
+  e_way_bill_no: MyString
+  date_of_issue_note: MyString
+  issue_note_no: MyString
+  pre_gst: MyString
+  place_of_supply: MyString
+  customer: one
+  reason_for_issuing_note: MyString
+
+two:
+  date_of_original_invoice: 2017-12-05
+  invoice_no: MyString
+  gstin_no: MyString
+  e_way_bill_no: MyString
+  date_of_issue_note: MyString
+  issue_note_no: MyString
+  pre_gst: MyString
+  place_of_supply: MyString
+  customer: two
+  reason_for_issuing_note: MyString

@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'issue_notes/new'
+
+  get 'credit_debit_notes/new'
+
+  get 'exempt_invoices/new'
+
+  get 'export_invoices/new'
+
   resources :unit_of_measures
   resources :business_sales
   resources :customers do 
@@ -14,13 +22,35 @@ Rails.application.routes.draw do
     member do
       get :show_invoice
     end
-    end
+  end
 
-  resources :invoice_items do
-    collection do
-      post :add
+  resources :export_invoices do
+     member do
+      get :show_export_invoice
     end
   end
+
+
+   resources :exempt_invoices do
+     member do
+      get :show_exempt_invoice
+    end
+  end
+
+
+   resources :credit_debit_notes do
+     member do
+      get :show_credit_debit_note
+    end
+  end
+
+  resources :issue_notes do
+     member do
+      get :show_issue_note
+    end
+  end
+
+ 
 
   resources :customer_items do
    collection do

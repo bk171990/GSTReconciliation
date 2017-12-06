@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table {
+     width:100%;
+   }
+   table, th, td {
+     border: 1px solid black;
+     border-collapse: collapse;
+     font-size: 12px;
+   }
+   th, td {
+     padding: 2px;
+     text-align: left;
+   }
+   table#t01 tr:nth-child(even) {
+     background-color: #eee;
+   }
+   table#t01 tr:nth-child(odd) {
+    background-color:#fff;
+  }
+  table#t01 th {
+   background-color: black;
+   color: white;
+ }
+ h5 {
+   display:inline;
+ }
+  p{
+    width: 250px;
+   }
+</style>
+</head>
+<body>
+
+  <div class="center"><h2><b><font color="grey">EXPORT/ZERO RATED Invoice</font></b></h2></div>
+  <div id="heading">
+   
+
+    
+    <div class align ="left">
+      <p><strong>Sold By:</strong>
+        <%=current_user.party.party_name%></p>
+        <p><strong>Date:</strong>
+          <%=@export_invoice.export_invoice_date%></p>
+          <p> <strong>Address:</strong>
+           <%=current_user.party.party_address%></p>
+           
+           <p> <strong>GSTIN No:</strong>
+             <%=current_user.party.party_gstin_no%></p>
+             <p> <strong>PAN No</strong>
+               <%=current_user.party.party_pan_no%></p>
+               
+             </div>
+             <div class align ="right">
+               <p> <strong>Customer Name:</strong>
+                 <%=@export_invoice.customer.customer_name%></p>
+                 <p> <strong>Address:</strong>
+                   <%=@export_invoice.customer.address%></p>
+                   <p> <strong>GSTIN No:</strong>
+                     <%=@export_invoice.customer.gstin_no_reg%></p>
+                     
+                     <br>
+                     <br>
+                     
+                   </div>  
+                   <div class align="left">
+                     <p><strong>Invoice Number:</strong>
+                      <%=@export_invoice.export_invoice_number%></p>
+                      <p><strong>Invoice Date:</strong>
+                        <%=@export_invoice.export_invoice_date%></p><br>
+                      </div>
+                      
+                    </div>  
+                  </div>  
+                  <table class="table table-condensed table-bordered" style="margin-top: -15px; margin-bottom: 15px;">
+                    <thead>
+                      <tr>
+                        <th style="font-size: 16px; background-color: #ccc; width: 75px;" colspan="11"><center>EXPORT/ZERO RATED Invoice</center></th>
+                      </tr>
+
+                      <th>Sr No</th>
+                      <th>Item Description</th>
+                      <th>HSN/SAC</th>
+                      <th>UOM</th>
+                      <th>Unit Price</th>
+                      <th>Quantity</th>
+                      <th>Net Amount</th>
+                      <th>Tax Rate</th>
+                      <th>Tax Type</th>
+                      <th>Tax Amount</th>
+                      <th>Total Amount</th>
+                    </tr>
+                    <%tax_amt = 0%>
+                    <%total_amt = 0%>
+
+                    <% @export_invoice.export_invoice_items.each_with_index do |i,n|%>
+                    <tr>
+                      <td><%= n + 1 %></td>
+                      <td><%= i.item.dogns%></td>
+                      <td><%= i.item.item_hsn_no%></td>
+                      <td><%= i.item.unit_of_measure.name%></td>
+                      <td>&#8377;<%= i.unit_price%></td>
+                      <td><%= i.quantity%></td>
+                      <td>&#8377;<%= i.net_amt%></td>
+                      <td><%= i.tax_rate%>&#37;</td>
+                      <td>CGST+SGST</td>
+                      <td>&#8377;<%= i.tax_amt%></td>
+                      <td align="right">&#8377;<%= i.total_amt%></td>
+                    </tr>
+                    <% tax_amt += i.tax_amt.to_f%>
+                    <%total_amt += i.total_amt.to_f%>
+                    <% end %>
+
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>Total Tax: &#8377;<%=tax_amt%></td>
+                      <td>Total Amount: &#8377;<%= total_amt%></td>
+                    </tr>
+
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+

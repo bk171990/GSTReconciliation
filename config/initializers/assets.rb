@@ -24,6 +24,14 @@ Rails.application.config.assets.precompile += %w( invoices.css )
 Rails.application.config.assets.precompile += %w( invoices.js )
 Rails.application.config.assets.precompile += %w( unit_of_measures.css )
 Rails.application.config.assets.precompile += %w( unit_of_measures.js )
+Rails.application.config.assets.precompile += %w( export_invoices.css )
+Rails.application.config.assets.precompile += %w( export_invoices.js )
+Rails.application.config.assets.precompile += %w( exempt_invoices.css )
+Rails.application.config.assets.precompile += %w( exempt_invoices.js )
+Rails.application.config.assets.precompile += %w( credit_debit_notes.css )
+Rails.application.config.assets.precompile += %w( credit_debit_notes.js )
+Rails.application.config.assets.precompile += %w( issue_notes.css )
+Rails.application.config.assets.precompile += %w( issue_notes.js )
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.

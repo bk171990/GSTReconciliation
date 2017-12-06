@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  issue_note: one
+  item: one
+  unit_price: MyString
+  quantity: MyString
+  rate: MyString
+  net_amt: MyString
+  sgst: MyString
+  cgst: MyString
+  tax_rate: MyString
+  tax_amt: MyString
+  total_amt: MyString
+  qty: MyString
+
+two:
+  issue_note: two
+  item: two
+  unit_price: MyString
+  quantity: MyString
+  rate: MyString
+  net_amt: MyString
+  sgst: MyString
+  cgst: MyString
+  tax_rate: MyString
+  tax_amt: MyString
+  total_amt: MyString
+  qty: MyString

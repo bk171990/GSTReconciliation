@@ -1,0 +1,106 @@
+ <div class="pageheader">
+   <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h3 class="panel-title">Regular Sale Invoice</h3>
+          <div class="actions pull-right">
+           <i class="fa fa-expand"></i>
+           <i class="fa fa-chevron-down"></i>
+           <i class="fa fa-times"></i>
+         </div>
+       </div>
+       
+       <div class="panel-body">
+       <div class="pull-right">
+        <%= link_to 'Download PDF ',show_issue_note_issue_note_path( @issue_note, format: 'pdf'),target: '_blank', class: "btn btn-primary"%> <b> | </b> <%=link_to 'Back', issue_notes_path, class: 'btn btn-success'%>
+        </div>
+
+         <div class="row">
+             <div class="col-md-4">
+             <div class="pull-left">
+            <p><strong>Invoice Number:</strong>
+              <%= @issue_note.invoice_no%></p>
+              <p><strong>Date:</strong>
+                <%= @issue_note.date_of_original_invoice%></p>
+                <p> <strong>Customer Name:</strong>
+                 <%= @issue_note.customer.customer_name%></p>
+                 <p> <strong>Address:</strong>
+                   <%= @issue_note.customer.address%></p>
+                   <p> <strong>GSTIN No:</strong>
+                     <%= @issue_note.customer.gstin_no_reg%></p>
+                    
+                       <br>
+                     </div></div>
+
+                       
+                     <div class="col-md-4 col-sm-offset-8">
+                      <div class="pull-right">
+                        <p><strong>Sold By:</strong>
+                          <%=current_user.party.party_name%></p>
+                          <p><strong>Date:</strong>
+                            <%= @issue_note.date_of_original_invoice%></p>
+                            <p> <strong>Address:</strong>
+                             <%=current_user.party.party_address%></p>
+                             
+                             <p> <strong>GSTIN No:</strong>
+                               <%=current_user.party.party_gstin_no%></p>
+                               <p> <strong>PAN No</strong>
+                                 <%=current_user.party.party_pan_no%></p>
+                                 <br>
+                               </div></div></div>
+                               <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                  <thead>
+                                    <tr>
+                                     <th>Sr No</th>
+                                     <th>Item Description</th>
+                                     <th>HSN/SAC</th>
+                                     <th>UOM</th>
+                                     <th>Unit Price</th>
+                                     <th>Quantity</th>
+                                     <th>Net Amount</th>
+                                     <th>Tax Rate</th>
+                                     <th>Tax Type</th>
+                                     <th>Tax Amount</th>
+                                     <th>Total Amount</th>
+                                   </tr>
+                                 </thead>
+
+                                 <tbody>
+                                  <%tax_amt = 0%>
+                                  <%total_amt = 0%>
+                                  <%  @issue_note.issue_note_items.each_with_index do |i,n|%>
+                                  <tr>
+                                    <td><%= n + 1 %></td>
+                                    <td><%= i.item.dogns%></td>
+                                    <td><%= i.item.item_hsn_no%></td>
+                                    <td><%= i.item.unit_of_measure.name%></td>
+                                    <td>&#8377;<%= i.unit_price%></td>
+                                    <td><%= i.quantity%></td>
+                                    <td>&#8377;<%= i.net_amt%></td>
+                                    <td><%= i.tax_rate%>&#37;</td>
+                                    <td>CGST+SGST</td>
+                                    <td>&#8377;<%= i.tax_amt%></td>
+                                    <td>&#8377;<%= i.total_amt%></td>
+                                  </tr>
+                                  <% tax_amt += i.tax_amt.to_f%>
+                                  <%total_amt += i.total_amt.to_f%>
+                                  <% end %>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <b> Total Tax </b>&#8377;<%=tax_amt%><br>
+                    <b>Total Amount </b>&#8377;<%=total_amt%><br>
+                    <b>Discount </b> <%=text_field_tag :discount%>
+
+                    <br>
+
+                  </div>
+                </div>
+              </div>
+            </div>

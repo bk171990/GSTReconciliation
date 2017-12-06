@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer: one
+  exempt_invoice_number: MyString
+  exempt_invoice_date: 2017-12-04
+
+two:
+  customer: two
+  exempt_invoice_number: MyString
+  exempt_invoice_date: 2017-12-04

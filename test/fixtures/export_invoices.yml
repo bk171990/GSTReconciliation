@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer: one
+  export_invoice_number: MyString
+  export_invoice_date: 2017-12-04
+
+two:
+  customer: two
+  export_invoice_number: MyString
+  export_invoice_date: 2017-12-04
