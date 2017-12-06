@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129095258) do
+ActiveRecord::Schema.define(version: 20171206083009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20171129095258) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
-    t.boolean "status"
   end
 
   create_table "customer_items", force: :cascade do |t|
@@ -80,6 +79,31 @@ ActiveRecord::Schema.define(version: 20171129095258) do
     t.datetime "updated_at", null: false
     t.integer "party_id"
     t.string "invoice_no"
+  end
+
+  create_table "export_purchase_bill_items", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "export_purchase_bill_id"
+    t.integer "quantity"
+    t.float "net_amount"
+    t.float "tax_rate"
+    t.float "tax_amt"
+    t.float "total_amt"
+    t.string "item_description"
+    t.integer "unit_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["export_purchase_bill_id"], name: "index_export_purchase_bill_items_on_export_purchase_bill_id"
+    t.index ["item_id"], name: "index_export_purchase_bill_items_on_item_id"
+  end
+
+  create_table "export_purchase_bills", force: :cascade do |t|
+    t.integer "purchase_no"
+    t.date "date"
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_export_purchase_bills_on_customer_id"
   end
 
   create_table "general_settings", force: :cascade do |t|
@@ -145,6 +169,35 @@ ActiveRecord::Schema.define(version: 20171129095258) do
     t.index ["unit_of_measure_id"], name: "index_items_on_unit_of_measure_id"
   end
 
+  create_table "nillrate_exempt_bill_items", force: :cascade do |t|
+    t.integer "purchase_no"
+    t.date "date"
+    t.integer "quantity"
+    t.float "net_amount"
+    t.float "tax_rate"
+    t.float "tax_amt"
+    t.float "total_amt"
+    t.string "item_description"
+    t.integer "unit_price"
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "nillrate_exempt_bill_id"
+    t.bigint "item_id"
+    t.index ["customer_id"], name: "index_nillrate_exempt_bill_items_on_customer_id"
+    t.index ["item_id"], name: "index_nillrate_exempt_bill_items_on_item_id"
+    t.index ["nillrate_exempt_bill_id"], name: "index_nillrate_exempt_bill_items_on_nillrate_exempt_bill_id"
+  end
+
+  create_table "nillrate_exempt_bills", force: :cascade do |t|
+    t.integer "purchase_no"
+    t.date "date"
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_nillrate_exempt_bills_on_customer_id"
+  end
+
   create_table "parties", force: :cascade do |t|
     t.string "party_name"
     t.string "party_gstin_no"
@@ -173,8 +226,32 @@ ActiveRecord::Schema.define(version: 20171129095258) do
     t.bigint "charted_accountant_id"
     t.string "composite"
     t.string "regular"
-    t.boolean "status"
     t.index ["charted_accountant_id"], name: "index_parties_on_charted_accountant_id"
+  end
+
+  create_table "purchase_bill_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.float "net_amount"
+    t.float "tax_rate"
+    t.float "tax_amt"
+    t.float "total_amt"
+    t.string "item_description"
+    t.integer "unit_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "item_id"
+    t.bigint "purchase_bill_id"
+    t.index ["item_id"], name: "index_purchase_bill_items_on_item_id"
+    t.index ["purchase_bill_id"], name: "index_purchase_bill_items_on_purchase_bill_id"
+  end
+
+  create_table "purchase_bills", force: :cascade do |t|
+    t.integer "purchase_no"
+    t.date "date"
+    t.bigint "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_purchase_bills_on_customer_id"
   end
 
   create_table "unit_of_measures", force: :cascade do |t|
@@ -222,8 +299,18 @@ ActiveRecord::Schema.define(version: 20171129095258) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "export_purchase_bill_items", "export_purchase_bills"
+  add_foreign_key "export_purchase_bill_items", "items"
+  add_foreign_key "export_purchase_bills", "customers"
   add_foreign_key "items", "unit_of_measures"
+  add_foreign_key "nillrate_exempt_bill_items", "customers"
+  add_foreign_key "nillrate_exempt_bill_items", "items"
+  add_foreign_key "nillrate_exempt_bill_items", "nillrate_exempt_bills"
+  add_foreign_key "nillrate_exempt_bills", "customers"
   add_foreign_key "parties", "charted_accountants"
+  add_foreign_key "purchase_bill_items", "items"
+  add_foreign_key "purchase_bill_items", "purchase_bills"
+  add_foreign_key "purchase_bills", "customers"
   add_foreign_key "user_charted_accountants", "charted_accountants"
   add_foreign_key "user_charted_accountants", "users"
   add_foreign_key "users", "charted_accountants"

@@ -1,0 +1,2 @@
+class NillrateExemptBillItemsController < ApplicationController
+end

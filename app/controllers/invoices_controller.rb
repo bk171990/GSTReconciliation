@@ -37,7 +37,7 @@ class InvoicesController < ApplicationController
   end
 
 def show_invoice
-       @invoice = Invoice.find(params[:id])
+      @invoice = Invoice.find(params[:id])
       respond_to do |format|
       format.html
       format.pdf do

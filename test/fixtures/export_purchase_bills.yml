@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  purchase_no: 1
+  date: 2017-12-05
+  quantity: 1
+  net_amount: 1.5
+  tax_rate: 1.5
+  tax_amt: 1.5
+  total_amt: 1.5
+  item_description: MyString
+  unit_price: 1
+  customer: one
+
+two:
+  purchase_no: 1
+  date: 2017-12-05
+  quantity: 1
+  net_amount: 1.5
+  tax_rate: 1.5
+  tax_amt: 1.5
+  total_amt: 1.5
+  item_description: MyString
+  unit_price: 1
+  customer: two

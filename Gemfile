@@ -25,6 +25,9 @@ gem 'js-routes'
 gem "nested_form"
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+
+# this will convert total amount
+gem 'to_words'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
